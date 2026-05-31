@@ -1,0 +1,179 @@
+/* --- Globale Einstellungen --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0d0f12; /* Sehr dunkles Tech-Blau/Grau */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* --- Hintergrundbild mit Transparenz (Overlay) --- */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Hier dein Hintergrundbild-Pfad */
+    background-image: url('../assets/bg-biography.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15; /* Macht das Bild leicht transparent (15% Sichtbarkeit) */
+    z-index: -1; /* Schiebt es komplett in den Hintergrund */
+}
+
+/* --- Hero Header --- */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    z-index: 1;
+}
+
+.name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+.title-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.2rem;
+    color: #00ffcc; /* Das leuchtende Tech-Cyan deiner Visitenkarte */
+    font-weight: 400;
+}
+
+/* --- About Me Button --- */
+.btn-about {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-about:hover {
+    background-color: #ffffff;
+    color: #0d0f12;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --- Portfolio Sektion & Grid --- */
+.portfolio-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px 80px 40px;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+/* 3 Spalten auf dem PC, wechselt automatisch auf weniger bei Mobilgeräten */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* --- Projekt Karten --- */
+.project-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #161a1f;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Text-Overlay auf den Bildern */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.4) 70%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-overlay h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.card-overlay p {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* --- Hover Effekte --- */
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #00ffcc;
+    box-shadow: 0 10px 20px rgba(0, 255, 204, 0.15);
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+/* --- Responsive Anpassungen --- */
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    .portfolio-container {
+        padding: 0 20px 40px 20px;
+    }
+}

@@ -1,16 +1,118 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <title>Aaron Höhn Web Projects</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Höhn | XR Developer & Technical Artist</title>
+    <!-- Verweis auf den neuen CSS-Ordner -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Einbindung einer modernen Schriftart -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar-top"><a href="https://aaron-hoehn-portfolio.jimdofree.com/">Aaron Höhn Portfolio</a></nav>
-    <h1 class="font-size-50">Aaron Höhn Web Projects</h1>
-    <h2 class="font-size-xx-large">Projects</h2>
-    <table>
-        <tr>
-            <td><a href="ARPortfolio.html">ARPortfolio</a></td>  
-        </tr>
-    </table>
+
+    <!-- Hintergrund-Ebene für das leicht transparente Bild -->
+    <div class="background-overlay"></div>
+
+    <!-- Header-Bereich mit Name und Rolle -->
+    <header class="hero-section">
+        <h1 class="name">Aaron Höhn</h1>
+        <div class="titles">
+            <span class="title-tag">XR Designer / Developer</span>
+            <span class="title-tag">Technical Artist</span>
+        </div>
+        
+        <!-- About Me Button -->
+        <a href="about.html" class="btn-about">About Me</a>
+    </header>
+
+    <!-- Projekt-Sektion -->
+    <main class="portfolio-container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <!-- Das Grid für deine 6 wichtigsten Projekte -->
+        <div class="projects-grid">
+            
+            <!-- Projekt 1: Dein bestehendes AR-Portfolio -->
+            <div class="project-card">
+                <a href="ARPortfolio.html">
+                    <div class="image-wrapper">
+                        <img src="assets/project1.jpg" alt="Augmented Reality Portfolio">
+                        <div class="card-overlay">
+                            <h3>WebAR Portfolio</h3>
+                            <p>MindAR & A-Frame Showcase</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- BattleWall -->
+            <div class="project-card">
+                <a href="BattleWall.html">
+                    <div class="image-wrapper">
+                        <img src="assets/ProjectCover/BattleWallCover.png" alt="BattleWall">
+                        <div class="card-overlay">
+                            <h3>Battlewall</h3>
+                            <p>MR Multiplayer Game</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Goethe Puppet Theater -->
+            <div class="project-card">
+                <a href="GoethePuppetTheater.html">
+                    <div class="image-wrapper">
+                        <img src="assets/ProjectCover/GPTCover.png" alt="Goethe Puppet Theater">
+                        <div class="card-overlay">
+                            <h3>Goethe's Puppet Theater</h3>
+                            <p>Mixed Reality Application</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Projekt 4 (Platzhalter) -->
+            <div class="project-card">
+                <a href="projekt4.html">
+                    <div class="image-wrapper">
+                        <img src="assets/project4.jpg" alt="Projekt 4">
+                        <div class="card-overlay">
+                            <h3>Poly Quest</h3>
+                            <p>Low-Poly Action RPG</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Projekt 5 (Platzhalter) -->
+            <div class="project-card">
+                <a href="projekt5.html">
+                    <div class="image-wrapper">
+                        <img src="assets/project5.jpg" alt="Projekt 5">
+                        <div class="card-overlay">
+                            <h3>3D Art Portfolio</h3>
+                            <p>Blender & Substance Pipelines</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Projekt 6 (Platzhalter) -->
+            <div class="project-card">
+                <a href="projekt6.html">
+                    <div class="image-wrapper">
+                        <img src="assets/project6.jpg" alt="Projekt 6">
+                        <div class="card-overlay">
+                            <h3>Shader & FX Showcase</h3>
+                            <p>Unity Technical Art</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
 </body>
 </html>
