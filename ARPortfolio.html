@@ -1,0 +1,289 @@
+﻿<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <link rel="stylesheet" href="ARPortfolio.css">
+  </head>
+  <body>
+    <div id="custom-scanning-overlay" class="scanning-overlay">
+      <img src="targetImage.png" alt="Scan this image" />
+    </div>
+
+
+    <!-- Visible screen cursor -->
+    <div id="screen-cursor"></div>
+
+    <a-scene
+      mindar-image="imageTargetSrc:  ./targets.mind; maxTrack: 2; uiScanning: no; filterMinCF:0.1; filterBeta: 100; warmupTolerance: 1; missTolerance: 300"
+      color-space="sRGB"
+      embedded
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true">
+
+      <!-- Camera with raycaster -->
+      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+
+
+      <!-- AR-Tracking-Target -->
+      <a-entity mindar-image-target="targetIndex: 0">
+
+        <!-- Background -->
+        <a-plane color="black" opacity="0.9" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+
+        
+        
+        <!--------------------------- Interactive projects ------------------------------------>
+        <!-- Projekt 1 -->
+        <a-plane id="projectRTM"
+                 class="clickable"
+                 position="-0.3 0.4 0.01"
+                 width="0.25"
+                 height="0.25"
+                 src="images/RTMIcon.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- Projekt 2 -->
+        <a-plane id="project2"
+                 class="clickable"
+                 position="0 0.4 0.01"
+                 width="0.25"
+                 height="0.25"
+                 src="images/project2.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- Projekt 3 -->
+        <a-plane id="project3"
+                 class="clickable"
+                 position="0.3 0.4 0.01"
+                 width="0.25"
+                 height="0.25"
+                 src="images/project3.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- About ME -->
+        <a-plane id="aboutMe"
+                 class="clickable"
+                 position="-0.75 0.2 0.01"
+                 width="0.15"
+                 height="0.10"
+                 src="images/aboutMeIcon.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+        
+        <!-- Homepage -->
+        <a-plane id="homepage"
+                 class="clickable"
+                 position="-0.75 0 0.01"
+                 width="0.15"
+                 height="0.10"
+                 src="images/homePageIcon.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- Puppet Button -->
+        <a-plane id="puppetsButton"
+                 class="clickable"
+                 visible="false"
+                 position="0.0 -0.4 0.01"
+                 width="0.15"
+                 height="0.10"
+                 src="images/puppetsButton.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- 3d Gallery Button -->
+        <a-plane id="Gallery"
+                 class="clickable"
+                 visible="true"
+                 position="0.6 0.2 0.01"
+                 width="0.15"
+                 height="0.10"
+                 src="images/3dGallery.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- XM5 picture -->
+        <a-plane id="XMpicture"
+                 class="clickable"
+                 visible="false"
+                 position="0.7 0.0 0.01"
+                 width="0.35"
+                 height="0.20"
+                 src="images/xm5.jpg"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- Guitar picture -->
+        <a-plane id="guitarPicture"
+                 class="clickable"
+                 visible="false"
+                 position="0.7 -0.2 0.01"
+                 width="0.35"
+                 height="0.20"
+                 src="images/guitar1.jpg"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+
+
+        <!------------------------------------- OBJECTS --------------------------------------------->
+        <!-- XM5 Model -->
+        <a-entity id="xm5-wrapper" visible="false">
+          <a-gltf-model
+                  id="xm5model"
+                  src="3dModels/xm5.glb"
+                  scale="1.5 1.5 1.5"
+                  position="0 0 0.3"
+                  rotation="-90 180 0">
+          </a-gltf-model>
+        </a-entity>
+
+        <!-- Guitar Model -->
+        <a-entity id="guitar-wrapper" visible="false">
+          <a-gltf-model
+                  id="guitar"
+                  src="3dModels/Guitar.glb"
+                  scale="1 1 1"
+                  position="0 0.0 0.1"
+                  rotation="90 0 0">
+          </a-gltf-model>
+        </a-entity>
+
+        <!-- Goethe Model -->
+        <a-gltf-model
+                id="goethe"
+                src="3dModels/Goethe.glb"
+                visible="false"
+                scale="2 2 2"
+                position="0 0 0.15"
+                rotation="90 0 0">
+        </a-gltf-model>
+
+        <!-- Mephisto Model -->
+        <a-gltf-model
+                id="mephisto"
+                src="3dModels/Mephisto.glb"
+                visible="false"
+                scale="2 2 2"
+                position="-0.4 0 0.15"
+                rotation="90 0 0">
+        </a-gltf-model>
+
+        <!-- Charlotte Model -->
+        <a-gltf-model
+                id="charlotte"
+                src="3dModels/Charlotte.glb"
+                visible="false"
+                scale="2 2 2"
+                position="0.4 0 0.15"
+                rotation="90 0 0">
+        </a-gltf-model>
+
+        <!-- Header -->
+        <a-text
+                id="header"
+                value=""
+                align="center"
+                width="1"
+                height="0.05"
+                position="0 0.2 0.1"
+                visible="false"
+                color="#FFFFFF"
+                shader="msdf">
+        </a-text>
+
+        <!-- Project Text -->
+        <a-text
+                id="projectText"
+                value=""
+                font="fonts/RubikDirt-Regular-msdf.json"
+                align="left"
+                baseline="top"
+                width="0.7"
+                height="2"
+                wrapCount="1"
+                position="-0.1 0.15 0.1"
+                visible="false"
+                color="#FFFFFF"
+                negate="false"
+                shader="msdf">
+        </a-text>
+
+        <a-video
+                id="projectVideo"
+                src="#videoPlayer"
+                visible="false"
+                width="0.5"
+                height="0.3"
+                position="-0.4 0.0 0.15"
+                rotation="0 0 0">
+        </a-video>
+
+        <!-- Profile Picture -->
+        <a-plane id="profilePicture"
+                 visible="false"
+                 position="-0.3 0.0 0.15"
+                 width="0.30"
+                 height="0.35"
+                 src="images/ProfilePicture.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+        <!-- Rotation Arrow -->
+        <a-plane id="rotationArrow"
+                 visible="false"
+                 position="0 -0.2 0.05"
+                 width="0.50"
+                 height="0.30"
+                 src="images/rotationArrow.png"
+                 rotation="0 0 0"
+                 transparent="true"
+                 material="shader: flat">
+        </a-plane>
+
+      </a-entity>
+      <!-- Default lighting injected by A-Frame. -->
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 2" position="-0.5 0.5 1"></a-entity>
+
+      <!-- Assets-Management-System -->
+      <a-assets>
+        <video id="videoPlayer" muted preload="auto" loop crossorigin="anonymous" webkit-playsinline playsinline></video>
+      </a-assets>
+      
+    </a-scene>
+      <!--  EVENT EXAMPLE
+      _project1.addEventListener("click", OnOpenProject1 => 
+      {
+        console.log("project 1 clicked!");
+        OpenProject1();
+      });
+      -->
+    <script src="ARPortfolio.js"></script>
+  </body>
+</html>

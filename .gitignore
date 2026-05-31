@@ -1,0 +1,6 @@
+# blender backup files
+*.blend1
+
+# We don't need the node_modules, they can be easily downloaded from somewhere else
+# They would just bloat the repository for no good reason.
+node_modules/
