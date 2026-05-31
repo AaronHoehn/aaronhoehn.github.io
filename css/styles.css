@@ -24,7 +24,7 @@ body {
     width: 100vw;
     height: 100vh;
     /* Hier dein Hintergrundbild-Pfad */
-    background-image: url('../assets/bg-biography.jpg'); 
+    background-image: url('../assets/Background.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
