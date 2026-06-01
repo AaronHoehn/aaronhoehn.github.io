@@ -2,7 +2,7 @@
 /// Rock Paperplane Scissor, Final Assignment, Aaron Höhn, 1121152, ER-T1 WISE 2022 Fundamentals of Technology in Expanded Realities ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* @pjs preload="../game/data/classRoomParalax.png, ../game/data/rockImage.png"; */
+/* @pjs preload="..data/classRoomParalax.png, ..data/rockImage.png"; */
 
 // Minim audio library installed to play sounds
 import ddf.minim.*;
