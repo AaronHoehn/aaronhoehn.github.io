@@ -31,7 +31,7 @@
                 </div>
                 
                 <p class="project-description">
-                    Ein interaktiver Gameplay-Prototyp, der das klassische Prinzip von "Schere, Stein, Papier" in eine dynamische 3D-Umgebung überträgt. Bei diesem Projekt lag der Fokus besonders auf der sauberen Implementierung der Gameplay-Logik, der reibungslosen Steuerung und der visuellen Rückmeldung für den Spieler, um das traditionelle Spielprinzip in ein frisches, digitales Erlebnis zu verwandeln.
+                    Ein interaktiver Gameplay-Prototyp, der das klassische Prinzip von "Schere, Stein, Papier" in eine dynamic 3D-Umgebung überträgt. Bei diesem Projekt lag der Fokus besonders auf der sauberen Implementierung der Gameplay-Logik, der reibungslosen Steuerung und der visuellen Rückmeldung für den Spieler, um das traditionelle Spielprinzip in ein frisches, digitales Erlebnis zu verwandeln.
                 </p>
             </div>
         </section>
@@ -52,11 +52,26 @@
             </div>
         </section>
 
+        <div class="section-divider"></div>
+
+        <section class="project-game-section">
+            <h3 class="subsection-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; font-family: 'Roboto Mono', monospace; color: #00ffcc; text-align: center;">
+                Play the Prototype
+            </h3>
+            <p style="text-align: center; color: #a0aec0; margin-bottom: 25px; font-size: 0.95rem;">
+                Klicke in das Spielfeld und nutze <kbd style="background: #161a1f; padding: 3px 7px; border-radius: 4px; border: 1px solid #00ffcc; color: #00ffcc; font-family: 'Roboto Mono';">W</kbd> zum Fliegen!
+            </p>
+            
+            <div class="game-canvas-wrapper">
+                <canvas data-processing-sources="../game/rock_paperplane_scissor.pde"></canvas>
+            </div>
+        </section>
         <div class="button-wrapper project-back-container" style="margin-top: 50px;">
             <a href="../index.html" class="btn-about" style="border-color: rgba(255, 255, 255, 0.3);">Back to Portfolio</a>
         </div>
 
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
 </body>
 </html>
