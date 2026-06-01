@@ -583,21 +583,20 @@ public class Rock {
     float a = player1.posX - this.posX;
     float b = player1.posY - this.posY;
 
-    // FEHLER BEHOBEN: "float" statt "var" benutzt, da var in Processing abstürzt
     float distance = sqrt(a * a + b * b);
     
     if(distance < this.radius + player1.radius) {
       player1.makeInvincible();
-      die();
+      destroy(); // KORREKTUR: destroy() statt die()
       // stonePickedUp.play();
     }
   }
   
   void checkMapBoundaries() {
-    if(this.posX < -this.radius) die();
+    if(this.posX < -this.radius) destroy(); // KORREKTUR: destroy() statt die()
   }
   
-  void die() {
+  void destroy() { // KORREKTUR: destroy() statt die()
     rocks.remove(rocks.indexOf(this));
   }
 }
