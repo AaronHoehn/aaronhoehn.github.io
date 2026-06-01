@@ -64,7 +64,7 @@ GameState gameState = GameState.MainMenu;
 
 
 void settings() {
-  size(screenX, screenY);
+  size(600, 800);
 }
 
 void setup() {
