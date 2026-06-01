@@ -29,8 +29,12 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 255, 204, 0.2);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
         }
+
+        .subsection-title {
+        color: var(--accent-color) !important;
+    }
 
         /* Sorgt dafür, dass sich das Canvas auf kleineren Displays proportional verkleinert */
         #game-container canvas {

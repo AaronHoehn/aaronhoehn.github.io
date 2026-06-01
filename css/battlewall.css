@@ -44,7 +44,7 @@
     background: #000;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(0, 255, 204, 0.3);
+    border: 1px solid rgba(var(--accent-color-rgb), 0.3);
 }
 
 .video-wrapper iframe {
@@ -59,7 +59,7 @@
 .subtitle {
     font-family: 'Roboto Mono', monospace;
     font-size: 1.1rem;
-    color: #00ffcc;
+    color: var(--accent-color);
     margin-bottom: 20px;
     font-weight: 400;
     text-transform: uppercase;
@@ -91,15 +91,16 @@
 
 .gallery-row {
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 400px 1fr; /* 400px für das Bild, 1fr für den Rest (Text) */
     align-items: center;
     gap: 40px;
+    margin-bottom: 40px; /* Sicherstellen, dass Abstand zum nächsten Bild da ist */
 }
 
 .gallery-media {
     width: 100%;
     border-radius: 8px;
-    border: 1px solid rgba(0, 255, 204, 0.3);
+    border: 1px solid rgba(var(--accent-color-rgb), 0.3);
 }
 
 .gallery-text {

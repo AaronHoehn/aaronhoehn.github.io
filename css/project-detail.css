@@ -27,7 +27,8 @@
     max-width: 100% !important;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Hier war ein hartes Weiß, jetzt dezente Akzent-Farbe */
+    border: 1px solid rgba(var(--accent-color-rgb), 0.2); 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background-color: #161a1f;
 }
@@ -70,9 +71,9 @@
 .meta-tag {
     font-family: 'Roboto Mono', monospace;
     font-size: 0.85rem;
-    color: #00ffcc;
-    background-color: rgba(0, 255, 204, 0.08);
-    border: 1px solid rgba(0, 255, 204, 0.2);
+    color: var(--accent-color); /* Variable */
+    background-color: rgba(var(--accent-color-rgb), 0.08); /* Variable RGB */
+    border: 1px solid rgba(var(--accent-color-rgb), 0.2); /* Variable RGB */
     padding: 4px 10px;
     border-radius: 4px;
 }
@@ -82,36 +83,6 @@
     line-height: 1.7;
     color: #a0aec0;
     width: 100%;
-}
-
-/* Tools-Sektion unter der Trennlinie */
-.project-tools-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
-    gap: 20px !important;
-    width: 100% !important;
-}
-
-.detail-tool-card {
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    background-color: #161a1f;
-    padding: 15px 20px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.detail-tool-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-}
-
-.detail-tool-name {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #ffffff;
 }
 
 /* Responsive Anpassung für Tablets & Smartphones */
