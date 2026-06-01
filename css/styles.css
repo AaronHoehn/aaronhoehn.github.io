@@ -188,6 +188,32 @@ body {
     opacity: 1;
 }
 
+/* --- Neue Trennlinie zwischen Projekten und Galerie --- */
+.section-divider {
+    width: 100%;
+    margin: 50px 0; /* Erzeugt oben und unten Platz zur Linie */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Genau dieselbe Linie wie unter der Überschrift */
+}
+
+/* --- Separates Grid für die Galerie zur perfekten Zentrierung --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* Auf großen Bildschirmen begrenzen wir die Breite der Galerie-Karte im neuen Grid 
+   und zentrieren das Grid selbst, damit die Karte exakt in der Mitte steht */
+@media (min-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* Erzwingt dieselbe Spaltenbreite wie oben */
+    }
+    .gallery-card {
+        grid-column: 2; /* Setzt sie exakt in die Mitte */
+    }
+}
+
 /* --- Responsive Anpassungen --- */
 @media (max-width: 768px) {
     .name {
