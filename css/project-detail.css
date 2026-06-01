@@ -1,0 +1,127 @@
+/* ==========================================================================
+   PROJECT DETAIL PAGE STYLES (HARD RESET)
+   ========================================================================== */
+
+/* Überschreibt die Flexbox-Eigenschaften und das Null-Padding der globalen Klasse */
+.portfolio-container.project-detail-container {
+    padding-top: 100px !important; /* Hier kannst du den Abstand zum oberen Rand perfekt einstellen! */
+    width: 100% !important;
+    max-width: 1200px !important;
+    display: block !important; /* Hebt das globale Flex-Layout auf */
+    margin: 0 auto !important;
+}
+
+/* Zweispaltiges Layout absolut erzwingen */
+.project-hero {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr !important; /* Links GIF (mehr Platz), rechts Text */
+    gap: 50px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin-bottom: 40px;
+}
+
+/* Linke Spalte: Media-Styling */
+.project-media-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #161a1f;
+}
+
+.project-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Rechte Spalte: Text-Styling */
+.project-info-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.project-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0 !important;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    width: 100%;
+}
+
+/* Kleine Tags unter dem Titel */
+.project-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.meta-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    color: #00ffcc;
+    background-color: rgba(0, 255, 204, 0.08);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #a0aec0;
+    width: 100%;
+}
+
+/* Tools-Sektion unter der Trennlinie */
+.project-tools-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+.detail-tool-card {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    background-color: #161a1f;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-tool-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.detail-tool-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Responsive Anpassung für Tablets & Smartphones */
+@media (max-width: 900px) {
+    .project-hero {
+        grid-template-columns: 1fr !important; /* Unter 900px Breite automatisch untereinander fließen lassen */
+        gap: 35px !important;
+    }
+    
+    .project-title {
+        font-size: 2rem;
+    }
+}
