@@ -23,12 +23,11 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Hier dein Hintergrundbild-Pfad */
-    background-image: url('../assets/Background.png'); 
+    background-image: url('../assets/Backgrounds/Background.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.15; /* Macht das Bild leicht transparent (15% Sichtbarkeit) */
+    opacity: 0.25; /* Macht das Bild leicht transparent */
     z-index: -1; /* Schiebt es komplett in den Hintergrund */
 }
 
@@ -122,6 +121,7 @@ body {
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
+/* Gemeinsame Styles für Standbild und Hover-GIF */
 .image-wrapper img {
     position: absolute;
     top: 0;
@@ -129,7 +129,19 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+}
+
+/* Das statische Cover-Bild */
+.project-static-img {
+    z-index: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* Das Hover-GIF (standardmäßig unsichtbar) */
+.hover-gif {
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 /* Text-Overlay auf den Bildern */
@@ -143,6 +155,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    z-index: 3; /* Liegt immer über den Bildern und GIFs */
 }
 
 .card-overlay h3 {
@@ -164,8 +177,15 @@ body {
     box-shadow: 0 10px 20px rgba(0, 255, 204, 0.15);
 }
 
-.project-card:hover img {
+/* Beim Hovern zoomt das Standbild leicht rein und blendet aus */
+.project-card:hover .project-static-img {
     transform: scale(1.05);
+    opacity: 0;
+}
+
+/* Beim Hovern fadet das gestreckte GIF sanft ein */
+.project-card:hover .hover-gif {
+    opacity: 1;
 }
 
 /* --- Responsive Anpassungen --- */
