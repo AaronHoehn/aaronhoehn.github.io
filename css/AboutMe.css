@@ -1,0 +1,132 @@
+/* ==========================================================================
+   ABOUT ME - SEPARATE LAYOUT STYLES
+   ========================================================================== */
+
+.about-container {
+    padding-top: 60px;
+}
+
+/* Zweispaltiges Layout für Bild und Text */
+.about-hero {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    width: 100%;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-text-wrapper p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #a0aec0;
+    margin-bottom: 20px;
+}
+
+/* Hervorgehobener erster Satz */
+.about-text-wrapper .about-lead {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Zwischenüberschriften für Skills/Tools */
+.subsection-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-family: 'Roboto Mono', monospace;
+    color: #00ffcc;
+}
+
+/* Skills Layout (Badges) */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-tag-item {
+    background-color: #161a1f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.skill-tag-item:hover {
+    border-color: #00ffcc;
+}
+
+/* Software & Tools Layout (Grid mit Logos) */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #161a1f;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 204, 0.3);
+}
+
+.tool-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.tool-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Zurück-Button Styling-Anpassung */
+.back-button-container {
+    padding-top: 20px;
+}
+
+.btn-back {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Responsive Anpassung für mobile Geräte --- */
+@media (max-width: 850px) {
+    .about-hero {
+        grid-template-columns: 1fr; /* Schaltet auf einspaltig um */
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .profile-img {
+        max-width: 250px;
+    }
+}

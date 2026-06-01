@@ -55,12 +55,12 @@ body {
 .title-tag {
     font-family: 'Roboto Mono', monospace;
     font-size: 1.2rem;
-    color: #00ffcc; /* Das leuchtende Tech-Cyan deiner Visitenkarte */
+    color: #00ffcc; /* Das leuchtende Tech-Cyan */
     font-weight: 400;
 }
 
-/* --- About Me Button --- */
-.btn-about {
+/* --- Buttons (Base Styles) --- */
+.btn-about, .btn-more {
     display: inline-block;
     padding: 12px 30px;
     font-family: 'Roboto Mono', monospace;
@@ -69,14 +69,49 @@ body {
     border: 2px solid #ffffff;
     border-radius: 4px;
     font-weight: 500;
+    background: transparent;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.btn-about:hover {
+.btn-about:hover, .btn-more:hover {
     background-color: #ffffff;
     color: #0d0f12;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
+}
+
+/* Container um den Show-More-Button zu zentrieren */
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 10px 0;
+}
+
+.btn-more {
+    border-color: #00ffcc;
+    color: #00ffcc;
+}
+
+.btn-more:hover {
+    background-color: #00ffcc;
+    color: #0d0f12;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+/* --- Show/Hide Logik mit sanfter Animation --- */
+.hidden-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.show-content {
+    max-height: 2000px; /* Genug Raum, damit das Grid komplett ausfahren kann */
+    opacity: 1;
+    transition: max-height 0.7s cubic-bezier(0.4, 0, 1, 1), opacity 0.6s ease;
 }
 
 /* --- Portfolio Sektion & Grid --- */
@@ -97,7 +132,6 @@ body {
     padding-bottom: 10px;
 }
 
-/* 3 Spalten auf dem PC, wechselt automatisch auf weniger bei Mobilgeräten */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -131,13 +165,11 @@ body {
     object-fit: cover;
 }
 
-/* Das statische Cover-Bild */
 .project-static-img {
     z-index: 1;
     transition: transform 0.5s ease, opacity 0.3s ease;
 }
 
-/* Das Hover-GIF (standardmäßig unsichtbar) */
 .hover-gif {
     z-index: 2;
     opacity: 0;
@@ -155,7 +187,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    z-index: 3; /* Liegt immer über den Bildern und GIFs */
+    z-index: 3; /* Liegt über Bildern und GIFs */
 }
 
 .card-overlay h3 {
@@ -177,25 +209,23 @@ body {
     box-shadow: 0 10px 20px rgba(0, 255, 204, 0.15);
 }
 
-/* Beim Hovern zoomt das Standbild leicht rein und blendet aus */
 .project-card:hover .project-static-img {
     transform: scale(1.05);
     opacity: 0;
 }
 
-/* Beim Hovern fadet das gestreckte GIF sanft ein */
 .project-card:hover .hover-gif {
     opacity: 1;
 }
 
-/* --- Neue Trennlinie zwischen Projekten und Galerie --- */
+/* --- Trennlinie zur Galerie --- */
 .section-divider {
     width: 100%;
-    margin: 50px 0; /* Erzeugt oben und unten Platz zur Linie */
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Genau dieselbe Linie wie unter der Überschrift */
+    margin: 50px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* --- Separates Grid für die Galerie zur perfekten Zentrierung --- */
+/* --- Galerie Grid --- */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -203,14 +233,12 @@ body {
     width: 100%;
 }
 
-/* Auf großen Bildschirmen begrenzen wir die Breite der Galerie-Karte im neuen Grid 
-   und zentrieren das Grid selbst, damit die Karte exakt in der Mitte steht */
 @media (min-width: 1024px) {
     .gallery-grid {
-        grid-template-columns: repeat(3, 1fr); /* Erzwingt dieselbe Spaltenbreite wie oben */
+        grid-template-columns: repeat(3, 1fr); /* Passt sich an die Spaltenbreite von oben an */
     }
     .gallery-card {
-        grid-column: 2; /* Setzt sie exakt in die Mitte */
+        grid-column: 2; /* Perfekte Zentrierung auf dem Desktop */
     }
 }
 
