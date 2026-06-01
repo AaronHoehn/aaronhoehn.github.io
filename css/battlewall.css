@@ -1,15 +1,25 @@
 /* --- BattleWall Spezifisches CSS --- */
 
-.battlewall-bg {
+/* Gemeinsames Basis-Styling für beide Hintergründe */
+.project-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../assets/Backgrounds/BattleWallBackground.png');
     background-size: cover;
     background-position: center;
     z-index: -2;
+}
+
+/* Individuelles Bild für BattleWall */
+#battlewall-bg {
+    background-image: url('../assets/Backgrounds/BattleWallBackground.png');
+}
+
+/* Individuelles Bild für GPT */
+#gpt-bg {
+    background-image: url('../assets/Backgrounds/GPTBackground.png');
 }
 
 .battlewall-overlay {
@@ -53,7 +63,14 @@
 }
 
 .text-column {
-    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Hier kannst du den Abstand frei einstellen */
+}
+
+/* Optional: Damit die H1 nicht zu viel extra Abstand nach unten hat */
+.text-column h1 {
+    margin-bottom: 0;
 }
 
 .subtitle {
@@ -71,7 +88,7 @@
     width: 800px;
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
-    margin: 60px auto;
+    margin: 50px auto;
 }
 
 /* Galerie Bereich */
@@ -79,8 +96,8 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
+    max-width: 900px; /* Etwas breiter für bessere Optik */
+    margin: 0 auto 50px auto;
     padding: 0 20px;
 }
 
@@ -93,14 +110,18 @@
     display: grid;
     grid-template-columns: 400px 1fr; /* 400px für das Bild, 1fr für den Rest (Text) */
     align-items: center;
-    gap: 40px;
-    margin-bottom: 40px; /* Sicherstellen, dass Abstand zum nächsten Bild da ist */
+    gap: 10px;
+    margin-bottom: 10px; /* Sicherstellen, dass Abstand zum nächsten Bild da ist */
 }
 
 .gallery-media {
-    width: 100%;
+    width: 100%; /* Passt sich den 300px des Grid-Bereichs an */
+    max-width: 400px; /* Hier kannst du die Größe noch feintunen */
+    height: auto;
     border-radius: 8px;
     border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+    display: block;
+    margin: 0 auto; /* Zentriert das Bild im Grid-Bereich */
 }
 
 .gallery-text {

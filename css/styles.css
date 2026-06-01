@@ -113,7 +113,7 @@ body {
 .project-tools-heading {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-family: 'Roboto Mono', monospace;
     color: var(--accent-color);
     text-transform: uppercase;
