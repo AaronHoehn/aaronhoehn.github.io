@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Rock Paperplane Scissor, Final Assignment, Aaron Höhn, 1121152 | Umbau auf p5.js (Pure JavaScript)                             ///
+/// Rock Paperplane Scissor, Final Assignment, Aaron Höhn, 1121152 | Umbau auf p5.js (Pure JavaScript)                               ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let screenX = 600;
@@ -49,8 +49,13 @@ let rockDistanceToPillar = 100;
 let classRoomParallaxImg;
 let rockImg;
 
+// Koordinaten für die UI-Buttons auf Mobilgeräten
+let restartBtn = { x: 0, y: 0, w: 200, h: 55 };
+let skinBasicBtn = { x: 0, y: 0, w: 140, h: 45 };
+let skinHawkBtn = { x: 0, y: 0, w: 140, h: 45 };
+
 function preload() {
-  // WICHTIG: Pfade beziehen sich auf die HTML-Datei (Projects/RockPaperplaneScissor.html)
+  // Pfade beziehen sich auf die HTML-Datei (Projects/RockPaperplaneScissor.html)
   classRoomParallaxImg = loadImage('../game/data/classRoomParalax.png');
   rockImg = loadImage('../game/data/rockImage.png');
 }
@@ -65,9 +70,18 @@ function setup() {
   pillarRange = screenX * 1.5 + 40;
 
   bgController = new ParallaxBackground(screenY, 50, classRoomParallaxImg);
-  player1 = new Player(screenX / 2, screenY / 2, 35, 'w', 10, 1.2);
+  player1 = new Player(screenX / 2, screenY / 2, 35, 'w', 5.5, 1.2);
   pillar1 = new Pillar(150, screenX, 80, pillarColor, 50, objectSpeed);
   pillar2 = new Pillar(150, pillarRange, 80, pillarColor, 50, objectSpeed);
+
+  // Button-Positionen dynamisch berechnen
+  restartBtn.x = screenX / 2 - restartBtn.w / 2;
+  restartBtn.y = screenY / 1.35 - restartBtn.h / 2;
+
+  skinBasicBtn.x = screenX / 2 - skinBasicBtn.w - 15;
+  skinBasicBtn.y = screenY * 0.78;
+  skinHawkBtn.x = screenX / 2 + 15;
+  skinHawkBtn.y = screenY * 0.78;
 }
 
 function draw() {
@@ -113,21 +127,62 @@ function draw() {
   }
 }
 
+// =============================================================================
+// STEUERUNG (PC & MOBIL)
+// =============================================================================
+
 function keyPressed() {
-  switch (gameState) {
-    case GameState.MAIN_MENU:
-      gameState = GameState.RUNNING;
-      break;
-    case GameState.RUNNING:
-      player1.captureInput();
-      changeSkin();
-      break;
-    case GameState.GAME_OVER:
-      if (key === 'r' || key === 'R') {
+  if (gameState === GameState.RUNNING) {
+    player1.captureInput();
+    changeSkin();
+  } else if (gameState === GameState.GAME_OVER) {
+    if (key === 'r' || key === 'R') {
+      restartGame();
+    }
+  }
+}
+
+function touchStarted() {
+  // Prüfen, ob der Klick/Touch innerhalb des Spielfelds liegt
+  if (mouseX >= 0 && mouseX <= screenX && mouseY >= 0 && mouseY <= screenY) {
+    
+    // 1. Interaktionen im Hauptmenü
+    if (gameState === GameState.MAIN_MENU) {
+      if (skinUnlocked && mouseInButton(skinBasicBtn)) {
+        skin = Skins.BASIC;
+      } else if (skinUnlocked && mouseInButton(skinHawkBtn)) {
+        skin = Skins.NIGHTHAWK;
+      } else {
+        gameState = GameState.RUNNING;
+      }
+    } 
+    
+    // 2. Interaktionen während des Spiels (Tippen = Fliegen)
+    else if (gameState === GameState.RUNNING) {
+      player1.jumpPressed();
+    } 
+    
+    // 3. Interaktionen im Game-Over-Bildschirm
+    else if (gameState === GameState.GAME_OVER) {
+      if (skinUnlocked && mouseInButton(skinBasicBtn)) {
+        skin = Skins.BASIC;
+      } else if (skinUnlocked && mouseInButton(skinHawkBtn)) {
+        skin = Skins.NIGHTHAWK;
+      } else if (mouseInButton(restartBtn)) {
+        restartGame();
+      } else {
+        // Klick irgendwo anders hin startet als Komfort-Fallback ebenfalls neu
         restartGame();
       }
-      break;
+    }
+    
+    return false; // Verhindert Scrollen/Zoomen auf Mobilgeräten
   }
+}
+
+// Hilfsfunktion zur Überprüfung von Klicks auf UI-Elemente
+function mouseInButton(btn) {
+  return mouseX >= btn.x && mouseX <= btn.x + btn.w && mouseY >= btn.y && mouseY <= btn.y + btn.h;
 }
 
 function drawScore() {
@@ -187,8 +242,8 @@ function checkUnlockTextTimer() {
 
 function drawUnlockText() {
   if (showUnlockText) {
-    textSize(40);
-    fill(255, 255, 255);
+    textSize(35);
+    fill(0, 255, 204);
     noStroke();
     textAlign(RIGHT, TOP);
     text("Night Hawk unlocked!", screenX - 40, 65);
@@ -196,7 +251,7 @@ function drawUnlockText() {
 }
 
 function drawMainMenu() {
-  fill(0, 0, 0, 150);
+  fill(0, 0, 0, 170);
   rect(0, 0, screenX, screenY);
   fill(255, 255, 255);
   noStroke();
@@ -204,29 +259,72 @@ function drawMainMenu() {
   
   textSize(42);
   text("Rock Paperplane Scissor", screenX / 2, screenY / 6);
-  textSize(32);
-  text("press any key to start", screenX / 2, screenY / 2.5);
-  textSize(28);
-  text("press w to jump", screenX / 2, screenY / 1.5);
-  text("press r to restart", screenX / 2, screenY / 1.35);
   
-  textSize(18);
-  text("reach a score of " + skinUnlockScore + " to unlock a new skin", screenX / 2, screenY * 0.88);
-  text("change the skin with q and e", screenX / 2, screenY * 0.92);
+  // Pulsierender Starttext für Mobil-Look
+  let pulse = map(sin(frameCount * 0.08), -1, 1, 200, 255);
+  fill(0, 255, 204, pulse);
+  textSize(32);
+  text("Click to play", screenX / 2, screenY / 2.5);
+  
+  fill(255, 255, 255);
+  textSize(24);
+  text("", screenX / 2, screenY / 1.6);
+  
+  textSize(16);
+  fill(160, 174, 192);
+  text("Reach " + skinUnlockScore + " points for a new skin", screenX / 2, screenY * 0.90);
+  
+  if (skinUnlocked) {
+    drawSkinSelectionButtons();
+  }
 }
 
 function drawGameOverScreen() {
-  fill(0, 0, 0, 150);
+  fill(0, 0, 0, 180);
   rect(0, 0, screenX, screenY);
-  fill(255, 255, 255);
+  
+  // Game Over Text
+  fill(255, 75, 75);
   noStroke();
   textAlign(CENTER, CENTER);
+  textSize(75);
+  text("game over!", screenX / 2, screenY / 2.3);
   
-  textSize(80);
-  text("game over!", screenX / 2, screenY / 2);
+  // Score Anzeige
+  fill(255, 255, 255);
   textSize(32);
-  text("Your score: " + score, screenX / 2, screenY / 1.5);
-  text("press r to restart", screenX / 2, screenY / 1.35);
+  text("Your Score: " + score, screenX / 2, screenY / 1.65);
+
+  if (skinUnlocked) {
+    drawSkinSelectionButtons();
+  }
+}
+
+// Zeichnet mobile Buttons für die Skinauswahl
+function drawSkinSelectionButtons() {
+  push();
+  textAlign(CENTER, CENTER);
+  textSize(18);
+  fill(255);
+  text("Select Skin:", screenX / 2, screenY * 0.73);
+  
+  // Basic Skin Button
+  stroke(skin === Skins.BASIC ? color(0, 255, 204) : color(100));
+  fill(skin === Skins.BASIC ? color(0, 255, 204, 30) : color(20, 24, 30));
+  rect(skinBasicBtn.x, skinBasicBtn.y, skinBasicBtn.w, skinBasicBtn.h, 6);
+  noStroke();
+  fill(skin === Skins.BASIC ? color(0, 255, 204) : color(200));
+  textSize(16);
+  text("Basic", skinBasicBtn.x + skinBasicBtn.w/2, skinBasicBtn.y + skinBasicBtn.h/2);
+  
+  // Night Hawk Button
+  stroke(skin === Skins.NIGHTHAWK ? color(0, 255, 204) : color(100));
+  fill(skin === Skins.NIGHTHAWK ? color(0, 255, 204, 30) : color(20, 24, 30));
+  rect(skinHawkBtn.x, skinHawkBtn.y, skinHawkBtn.w, skinHawkBtn.h, 6);
+  noStroke();
+  fill(skin === Skins.NIGHTHAWK ? color(0, 255, 204) : color(200));
+  text("Night Hawk", skinHawkBtn.x + skinHawkBtn.w/2, skinHawkBtn.y + skinHawkBtn.h/2);
+  pop();
 }
 
 function onPillarRespawned(respawnedPillar) {
@@ -322,7 +420,7 @@ class Player {
       let secondsLeft = ceil(this.invincibilityTimer - gameTime);
       fill(255, 255, 255);
       noStroke();
-      textSize(30);
+      textSize(25);
       textAlign(RIGHT, TOP);
       text("Invincible: " + secondsLeft + "s", screenX - 20, 25);
     }
@@ -338,8 +436,12 @@ class Player {
   
   captureInput() {
     if (key.toLowerCase() === this.jumpKey) {
-      this.velocityY = -this.jump;
+      this.jumpPressed();
     }
+  }
+  
+  jumpPressed() {
+    this.velocityY = -this.jump;
   }
   
   wallCollision() {
