@@ -22,15 +22,20 @@
     background-image: url('../assets/Backgrounds/GPTBackground.png');
 }
 
-.battlewall-overlay {
+/* Basis-Klasse für Positionierung */
+.project-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7); 
     z-index: -1;
 }
+
+/* Unterschiedliche Dunkelheits-Stufen */
+.overlay-light { background: rgba(0, 0, 0, 0.4); }
+.overlay-medium { background: rgba(0, 0, 0, 0.6); }
+.overlay-dark { background: rgba(0, 0, 0, 0.85); }
 
 /* Grid Layout für den oberen Teil */
 .battlewall-container {
