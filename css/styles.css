@@ -124,6 +124,42 @@ body {
     transform: translateY(-2px);
 }
 
+.hover-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Damit es das Bild perfekt ausfüllt */
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Sorge dafür, dass das Video beim Hover auch abspielt */
+.project-card:hover .hover-gif {
+    opacity: 1;
+}
+
+/* Kleine Tags unter dem Titel */
+.project-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.meta-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-color); /* Variable */
+    background-color: rgba(var(--accent-color-rgb), 0.08); /* Variable RGB */
+    border: 1px solid rgba(var(--accent-color-rgb), 0.2); /* Variable RGB */
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
 /* --- Restliche Standard-Styles --- */
 .button-wrapper { width: 100%; display: flex; justify-content: center; padding: 40px 0 10px 0; }
 .portfolio-container { width: 100%; max-width: 1200px; padding: 0 40px 80px 40px; z-index: 1; }

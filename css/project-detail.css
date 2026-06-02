@@ -59,25 +59,6 @@
     width: 100%;
 }
 
-/* Kleine Tags unter dem Titel */
-.project-meta-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-
-.meta-tag {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--accent-color); /* Variable */
-    background-color: rgba(var(--accent-color-rgb), 0.08); /* Variable RGB */
-    border: 1px solid rgba(var(--accent-color-rgb), 0.2); /* Variable RGB */
-    padding: 4px 10px;
-    border-radius: 4px;
-}
-
 .project-description {
     font-size: 1.05rem;
     line-height: 1.7;

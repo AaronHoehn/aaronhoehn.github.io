@@ -24,3 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.querySelectorAll('.project-card').forEach(card => {
+    const video = card.querySelector('.hover-gif');
+    if (video && video.tagName === 'VIDEO') {
+        card.addEventListener('mouseenter', () => {
+            video.play();
+        });
+        card.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Setzt das Video auf den Anfang zurück
+        });
+    }
+});
