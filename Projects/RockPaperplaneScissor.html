@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rock Paperplane Scissor | Aaron Höhn</title>
+    <title>Rock Paperplane Scissor | Aaron Hoehn</title>
     
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project-detail.css">
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+        /* Sektionen für das Game */
         .project-game-section {
             width: 100%;
             display: flex;
@@ -25,7 +26,8 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -33,14 +35,21 @@
         }
 
         .subsection-title {
-        color: var(--accent-color) !important;
-    }
+            color: var(--accent-color) !important;
+        }
 
-        /* Sorgt dafür, dass sich das Canvas auf kleineren Displays proportional verkleinert */
+        /* Canvas-Anpassung */
         #game-container canvas {
             max-width: 100% !important;
             height: auto !important;
             display: block;
+        }
+
+        /* Fix für den Back-Button, damit er wie in BattleWall aussieht */
+        .project-back-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 80px;
         }
     </style>
 </head>
@@ -48,64 +57,57 @@
 
     <div class="background-overlay"></div>
 
-    <main class="portfolio-container project-detail-container">
-        
-        <section class="project-hero">
-            <div class="project-media-wrapper">
+    <main class="battlewall-container"> 
+        <div class="video-column">
+            <div class="video-wrapper">
                 <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/RockPaperplaneScissor.png">
                     <source src="../assets/Videos/RPS.mp4" type="video/mp4">
-                    Dein Browser unterstützt keine Videos.
                 </video>
             </div>
+        </div>
+
+        <div class="text-column">
+            <h1>Rock Paperplane Scissor</h1>
     
-            <div class="project-info-wrapper">
-                <h1 class="project-title">Rock Paperplane Scissor</h1>
-                <div class="project-meta-tags">
-                    <span class="meta-tag">JavaScript</span>
-                    <span class="meta-tag">p5.js</span>
-                    <span class="meta-tag">Mobile Friendly</span>
-                    <span class="meta-tag">Gameplay Prototype</span>
-                </div>
-        
-                <p class="project-description">
-                    This project was originally developed during my first semester in the Augmented and Virtual Reality degree program using Processing. It served as my introduction to the fundamentals of programming and game logic.
-
-                    To make the game more accessible and integrate it into my current portfolio, I later refactored and ported the entire project to JavaScript, utilizing the p5.js library. This transition allowed me to deepen my understanding of web-based game development and responsive design.
-                </p>
+            <div class="project-meta-tags">
+                <span class="meta-tag">JavaScript</span>
+                <span class="meta-tag">p5.js</span>
+                <span class="meta-tag">Gameplay Prototype</span>
             </div>
-        </section>
 
-        <div class="section-divider"></div>
-
-        <section class="project-tools-section">
-            <h3 class="subsection-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; font-family: 'Roboto Mono', monospace; color: #00ffcc;">
-                Tools & Technologies
-            </h3>
-            <div class="project-tools-grid">
-                <div class="detail-tool-card">
-                    <img src="../assets/Logos/JavaScript.png" alt="JavaScript Logo" class="detail-tool-logo" onerror="this.style.display='none'">
-                    <span class="detail-tool-name">JavaScript (p5.js)</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <section class="project-game-section">
-            <h3 class="subsection-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; font-family: 'Roboto Mono', monospace; color: #00ffcc; text-align: center;">
-                Play the Prototype
-            </h3>
-            
-            <div id="game-container" class="game-canvas-wrapper"></div>
-        </section>
-
-        <div class="button-wrapper project-back-container" style="margin-top: 50px;">
-            <a href="../index.html" class="btn-about" style="border-color: rgba(255, 255, 255, 0.2);">Back to Portfolio</a>
+            <p>This project was originally developed during my first semester in the Augmented and Virtual Reality degree program using Processing. It served as my introduction to the fundamentals of programming and game logic. To make the game more accessible and integrate it into my current portfolio, I later refactored and ported the entire project to JavaScript, utilizing the p5.js library. This transition allowed me to deepen my understanding of web-based game development and responsive design.</p>
         </div>
     </main>
 
+    <div class="section-divider"></div>
+
+    <section class="project-tools-section">
+        <h3 class="subsection-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; font-family: 'Roboto Mono', monospace; color: #00ffcc; text-align: center;">
+            Tools & Technologies
+        </h3>
+        <div class="project-tools-grid">
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/JavaScript.png" alt="JavaScript Logo" class="detail-tool-logo" onerror="this.style.display='none'">
+                <span class="detail-tool-name">JavaScript (p5.js)</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="project-game-section">
+        <h3 class="subsection-title" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; font-family: 'Roboto Mono', monospace; color: #00ffcc; text-align: center;">
+            Play the Prototype
+        </h3>
+        
+        <div id="game-container" class="game-canvas-wrapper"></div>
+    </section>
+
+    <div class="button-wrapper project-back-container">
+        <a href="../index.html" class="btn-about" style="border-color: rgba(255, 255, 255, 0.2);">Back to Portfolio</a>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    
     <script src="../game/rock_paperplane_scissor.js"></script>
 </body>
 </html>
