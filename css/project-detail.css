@@ -226,3 +226,33 @@
     left: 0;
 }
 
+
+/* Pucture Collage */
+.masonry-gallery {
+    column-count: 3;        /* Anzahl der Spalten */
+    column-gap: 15px;      /* Abstand zwischen den Bildern */
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.masonry-item {
+    width: 100%;
+    margin-bottom: 15px;   /* Abstand nach unten zum nächsten Bild */
+    border-radius: 8px;
+    display: block;        /* Wichtig, um Abstände unter dem Bild zu vermeiden */
+    border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+    transition: transform 0.3s ease;
+}
+
+.masonry-item:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive Anpassung: Auf kleineren Bildschirmen weniger Spalten */
+@media (max-width: 800px) {
+    .masonry-gallery { column-count: 2; }
+}
+
+@media (max-width: 500px) {
+    .masonry-gallery { column-count: 1; }
+}
