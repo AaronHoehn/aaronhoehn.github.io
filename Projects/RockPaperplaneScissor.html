@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* Sektionen f�r das Game */
+        /* Sektionen für das Game */
         .project-game-section {
             width: 100%;
             display: flex;
@@ -45,7 +45,7 @@
             display: block;
         }
 
-        /* Fix f�r den Back-Button, damit er wie in BattleWall aussieht */
+        /* Fix für den Back-Button, damit er wie in BattleWall aussieht */
         .project-back-container {
             display: flex;
             justify-content: center;
@@ -103,11 +103,32 @@
         <div id="game-container" class="game-canvas-wrapper"></div>
     </section>
 
-    <div class="button-wrapper project-back-container">
-        <a href="../index.html" class="btn-about" style="border-color: rgba(255, 255, 255, 0.2);">Back to Portfolio</a>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="../game/rock_paperplane_scissor.js"></script>
+
+
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
+            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
+        </div>
+
 </body>
 </html>
+
+<script>
+    const sideBtn = document.getElementById('side-back-button');
+    
+    document.addEventListener('mousemove', (e) => {
+        // Wenn die Maus innerhalb der ersten 200px vom linken Rand ist
+        if (e.clientX < 200) {
+            sideBtn.classList.add('is-visible');
+        } else {
+            // Button verschwindet wieder, sobald man sich weiter wegbewegt
+            sideBtn.classList.remove('is-visible');
+        }
+    });
+</script>

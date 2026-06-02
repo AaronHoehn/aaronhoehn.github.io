@@ -156,6 +156,12 @@
     }
 }
 
+@media (max-width: 768px) {
+    .side-back-btn {
+        left: 0; /* Auf dem Handy immer sichtbar */
+    }
+}
+
 .gallery-heading {
     text-align: center;
     color: #ffffff;
@@ -165,5 +171,50 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+
+/* Side Panel */
+.side-back-btn {
+    position: fixed;
+    top: 50%;
+    left: -160px; /* Weiter links versteckt, da er breiter wird */
+    transform: translateY(-50%);
+    transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
+}
+
+.side-back-btn a {
+    display: block;
+    /* Auffälligeres Design */
+    background: rgba(var(--accent-color-rgb), 0.25);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(var(--accent-color-rgb), 0.8); /* Dickerer Rahmen */
+    color: white;
+    
+    /* Größer machen */
+    padding: 40px 30px; 
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    
+    border-radius: 0 50px 50px 0;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    /* Leichter Schatten für Sichtbarkeit */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+}
+
+/* Hover-Effekt: Wenn man mit der Maus drüberfährt, wird er noch deutlicher */
+.side-back-btn a:hover {
+    background: rgba(var(--accent-color-rgb), 0.4);
+    border-color: rgba(var(--accent-color-rgb), 1);
+}
+
+.side-back-btn.is-visible {
+    left: 0;
 }
 

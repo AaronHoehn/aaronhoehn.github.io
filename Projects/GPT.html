@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -100,9 +100,28 @@
 
 
 
-        <div class="button-wrapper back-button-container" style="grid-column: 1 / -1; justify-self: center;">
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
             <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
         </div>
 
 </body>
 </html>
+
+<script>
+    const sideBtn = document.getElementById('side-back-button');
+    
+    document.addEventListener('mousemove', (e) => {
+        // Wenn die Maus innerhalb der ersten 200px vom linken Rand ist
+        if (e.clientX < 200) {
+            sideBtn.classList.add('is-visible');
+        } else {
+            // Button verschwindet wieder, sobald man sich weiter wegbewegt
+            sideBtn.classList.remove('is-visible');
+        }
+    });
+</script>
