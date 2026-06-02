@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescue The Moon | Aaron Hoehn</title>
+    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project-detail.css">
+</head>
+<body>
+
+    <div id="RTM-bg" class="project-bg"></div>
+    <div class="project-overlay" style="background: rgba(0, 0, 0, 0.7);">></div>
+
+    <main class="battlewall-container">
+        <div class="video-column">
+            <div class="video-wrapper">
+            <video class="gallery-media" autoplay muted loop playsinline>
+            <source src="../assets/Videos/RTM.mp4" type="video/mp4">
+            </video>              
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/RPNR-M7vS5Q" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="text-column">
+            <h1>Rescur The Moon (2023)</h1>
+
+            <div class="project-meta-tags" style="margin-bottom: 20px;">
+                <span class="meta-tag">Unity</span>
+                <span class="meta-tag">RPG</span>
+            </div>
+
+            <h3 class="subtitle">2nd Semester Solo Project</h3>
+            <p>"Rescue the Moon" is a story-driven 3rd-person single-player RPG that I developed using Unity over a five-month period during my second semester at university. As the sole developer, I was responsible for every aspect of the project, from initial concept and design to final implementation.</p>
+            <p>This project significantly advanced my C# coding skills. I built my own complex systems, such as:</p>
+            <p>- 3rd Person Controller</p>
+            <p>- Enemy State Machine</p>
+            <p>- Vehicle Controls</p>
+            <p>- Linear Quest System</p>
+        </div>
+    </main>
+
+    <section class="project-tools-section">
+        <h3 class="project-tools-heading">Tools & Technologies</h3>
+        <div class="project-tools-grid">
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Unity.png" alt="Unity" class="detail-tool-logo">
+                <span class="detail-tool-name">Unity</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Blender.png" alt="Blender" class="detail-tool-logo">
+                <span class="detail-tool-name">Blender</span>
+            </div>
+
+            </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
+            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
+        </div>
+
+</body>
+</html>
+
+<script>
+    const sideBtn = document.getElementById('side-back-button');
+    
+    document.addEventListener('mousemove', (e) => {
+        // Wenn die Maus innerhalb der ersten 200px vom linken Rand ist
+        if (e.clientX < 200) {
+            sideBtn.classList.add('is-visible');
+        } else {
+            // Button verschwindet wieder, sobald man sich weiter wegbewegt
+            sideBtn.classList.remove('is-visible');
+        }
+    });
+</script>

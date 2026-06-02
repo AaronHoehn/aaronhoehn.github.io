@@ -22,6 +22,14 @@
     background-image: url('../assets/Backgrounds/GPTBackground.png');
 }
 
+#RPS-bg {
+    background-image: url('../assets/Backgrounds/RPSBackground.png');
+}
+
+#RTM-bg {
+    background-image: url('../assets/Backgrounds/RTMBackground.JPG');
+}
+
 /* Basis-Klasse für Positionierung */
 .project-overlay {
     position: fixed;
