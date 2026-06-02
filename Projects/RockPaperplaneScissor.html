@@ -7,7 +7,8 @@
     
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project-detail.css">
-    
+    <script src="../js/script.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
@@ -89,8 +90,8 @@
         </h3>
         <div class="project-tools-grid">
             <div class="detail-tool-card">
-                <img src="../assets/Logos/JavaScript.png" alt="JavaScript Logo" class="detail-tool-logo" onerror="this.style.display='none'">
-                <span class="detail-tool-name">JavaScript (p5.js)</span>
+                <img src="../assets/Logos/Processing.png" alt="Processing Logo" class="detail-tool-logo" onerror="this.style.display='none'">
+                <span class="detail-tool-name">Processing</span>
             </div>
         </div>
     </section>
@@ -120,17 +121,3 @@
 
 </body>
 </html>
-
-<script>
-    const sideBtn = document.getElementById('side-back-button');
-    
-    document.addEventListener('mousemove', (e) => {
-        // Wenn die Maus innerhalb der ersten 200px vom linken Rand ist
-        if (e.clientX < 200) {
-            sideBtn.classList.add('is-visible');
-        } else {
-            // Button verschwindet wieder, sobald man sich weiter wegbewegt
-            sideBtn.classList.remove('is-visible');
-        }
-    });
-</script>

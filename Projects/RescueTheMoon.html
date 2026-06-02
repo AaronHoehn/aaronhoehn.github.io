@@ -7,6 +7,10 @@
     
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project-detail.css">
+    <script src="../js/script.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -14,11 +18,11 @@
     <div class="project-overlay" style="background: rgba(0, 0, 0, 0.7);">></div>
 
     <main class="battlewall-container">
-        <div class="video-column">
+          <div class="video-column">
             <div class="video-wrapper">
-            <video class="gallery-media" autoplay muted loop playsinline>
-            <source src="../assets/Videos/RTM.mp4" type="video/mp4">
-            </video>              
+                <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/ArduinoRCGameCover.png">
+                    <source src="../assets/Videos/RTM.mp4" type="video/mp4">
+                </video>
             </div>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/RPNR-M7vS5Q" frameborder="0" allowfullscreen></iframe>
@@ -65,13 +69,13 @@
 <section class="asset-gallery-section">
     <h3 class="gallery-heading">3D Asset Showcase</h3>
     <div class="masonry-gallery">
-        <img src="../assets/RTM/base1.PNG" class="masonry-item">
-        <img src="../assets/RTM/base2.PNG" class="masonry-item">
-        <img src="../assets/RTM/bunker2.jpg" class="masonry-item">
-        <img src="../assets/RTM/car2.PNG" class="masonry-item">
-        <img src="../assets/RTM/Jetpack1.PNG" class="masonry-item">
-        <img src="../assets/RTM/Jetpack2.PNG" class="masonry-item">
-        <img src="../assets/RTM/tower1.PNG" class="masonry-item">
+        <img src="../assets/RTM/base1.PNG" class="masonry-item zoomable">
+        <img src="../assets/RTM/base2.PNG" class="masonry-item zoomable">
+        <img src="../assets/RTM/bunker2.jpg" class="masonry-item zoomable">
+        <img src="../assets/RTM/car2.PNG" class="masonry-item zoomable">
+        <img src="../assets/RTM/Jetpack1.PNG" class="masonry-item zoomable">
+        <img src="../assets/RTM/Jetpack2.PNG" class="masonry-item zoomable">
+        <img src="../assets/RTM/tower1.PNG" class="masonry-item zoomable">
     </div>
 </section>
 
@@ -87,17 +91,3 @@
 
 </body>
 </html>
-
-<script>
-    const sideBtn = document.getElementById('side-back-button');
-    
-    document.addEventListener('mousemove', (e) => {
-        // Wenn die Maus innerhalb der ersten 200px vom linken Rand ist
-        if (e.clientX < 200) {
-            sideBtn.classList.add('is-visible');
-        } else {
-            // Button verschwindet wieder, sobald man sich weiter wegbewegt
-            sideBtn.classList.remove('is-visible');
-        }
-    });
-</script>

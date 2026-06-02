@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino RC Game | Aaron Hoehn</title>
+    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project-detail.css">
+    <script src="../js/script.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="ArduinoRCGame-bg" class="project-bg"></div>
+    <div class="project-overlay" style="background: rgba(0, 0, 0, 0.7);">></div>
+
+    <main class="battlewall-container">
+        <div class="video-column">
+            <div class="video-wrapper">
+                <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/ArduinoRCGameCover.png">
+                    <source src="../assets/Videos/ArduinoGame.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="text-column">
+            <h1>Arduino RC Game (2025)</h1>
+
+            <div class="project-meta-tags" style="margin-bottom: 20px;">
+                <span class="meta-tag">Unity</span>
+                <span class="meta-tag">Arduino</span>
+            </div>
+
+            <h3 class="subtitle">Hand-Gesture Controller Prototype</h3>
+            <p>In this prototype, I developed a Unity project where players drive an RC vehicle through a hilly landscape, collecting checkpoints along the way.</p>
+            <p>I built a glove controller: an Arduino-powered system using a gyroscope for tilt input and a flex sensor to detect lifting motions of the vehicle. To establish a wireless connection, I integrated a Bluetooth module that enables real-time communication with Unity.</p>
+            <p>Through this project, I was able to combine my knowledge of electronics with my game development skills and gained a deeper understanding of how to program microcontrollers.</p>
+        </div>
+    </main>
+
+    <section class="project-tools-section">
+        <h3 class="project-tools-heading">Tools & Technologies</h3>
+        <div class="project-tools-grid">
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Unity.png" alt="Unity" class="detail-tool-logo">
+                <span class="detail-tool-name">Unity</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Blender.png" alt="Blender" class="detail-tool-logo">
+                <span class="detail-tool-name">Blender</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Arduino.png" alt="Arduino" class="detail-tool-logo">
+                <span class="detail-tool-name">Arduino</span>
+            </div>
+
+            </div>
+    </section>
+
+
+
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
+            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
+        </div>
+
+</body>
+</html>
