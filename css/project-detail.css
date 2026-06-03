@@ -54,6 +54,10 @@
     background-image: url('../assets/Backgrounds/MultiplayerParkour.png');
 }
 
+#SavingAngkorWat-bg {
+    background-image: url('../assets/Backgrounds/SavingAngkorWat.jpg');
+}
+
 /* Basis-Klasse für Positionierung */
 .project-overlay {
     position: fixed;
