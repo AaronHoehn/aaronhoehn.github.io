@@ -24,26 +24,28 @@
 }
 
 .back-to-portfolio-btn {
-    position: fixed;
-    bottom: 20px;         /* Abstand vom unteren Rand */
-    left: 50%;            /* Von der Mitte aus starten */
-    transform: translateX(-50%); /* Exakt zentrieren */
-    z-index: 1000;        /* Sicherstellen, dass er über der AR-Scene liegt */
+    position: fixed !important;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999 !important; /* Hält den Button immer im Vordergrund */
+    pointer-events: auto !important; /* Stellt sicher, dass Klicks ankommen */
     
     /* Design */
-    padding: 12px 25px;
-    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px 24px;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    border: 2px solid #00ffcc; /* Dein Akzent-Farbe Style */
+    border: 2px solid #ffffff;
     border-radius: 30px;
     text-decoration: none;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
     backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.back-to-portfolio-btn:hover {
-    background-color: rgba(0, 255, 204, 0.2);
-    transform: translateX(-50%) scale(1.05);
+/* Sicherstellen, dass die Szene den Button nicht überlagert */
+a-scene {
+    z-index: 1 !important;
 }

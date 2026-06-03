@@ -271,3 +271,53 @@ body {
     font-size: 40px;
     cursor: pointer;
 }
+
+/* Styling für den neuen Kontaktbereich */
+.contact-section {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-family: 'Roboto Mono', monospace;
+    transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: var(--accent-color); /* Nutzt deine definierte Akzentfarbe */
+}
+
+.contact-section .section-title {
+    border-bottom: none !important;
+}
+
+.contact-links a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* --- Copryright --- */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.site-footer p {
+    font-size: 0.85rem; /* Etwas kleiner */
+    color: #888;        /* Grauer Farbton */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
