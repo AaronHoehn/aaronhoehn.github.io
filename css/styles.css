@@ -39,6 +39,16 @@ body {
     z-index: -1;
 }
 
+.section-subheading {
+    font-size: 1.2rem;          /* Etwas kleiner als dein 1.5rem Heading */
+    font-weight: 500;           /* Weniger fett als das Haupt-Heading */
+    color: #ffffff;             /* Vielleicht weiß statt Akzentfarbe, um Fokus zu trennen */
+    margin-bottom: 15px;        /* Etwas knapperer Abstand */
+    margin-top: 30px;           /* Abstand nach oben, falls nötig */
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+}
+
 /* --- Hero Header --- */
 
 .hero-section {
