@@ -24,9 +24,12 @@ const _rotationArrowEL = document.querySelector('#rotationArrow');
 
 
 // clickable instances
-const _projectRTM = document.querySelector('#projectRTM');
+const _project1 = document.querySelector('#project1');
 const _project2 = document.querySelector('#project2');
 const _project3 = document.querySelector('#project3');
+const _project4 = document.querySelector('#project4');
+const _project5 = document.querySelector('#project5');
+const _project6 = document.querySelector('#project6');
 const _aboutMe = document.querySelector('#aboutMe');
 const _homepage = document.querySelector('#homepage');
 const _puppetsButton = document.querySelector('#puppetsButton');
@@ -61,19 +64,18 @@ function handleSelection() {
 
         // show only selected project
         switch (selectedId) {
-            case "projectRTM":
+            case "project1":
                 galleryIsActive = false;
 
                 // header
                 headerEl.setAttribute('visible', true)
-                headerEl.setAttribute('value', 'Rescue The Moon (2023)');
+                headerEl.setAttribute('value', 'BattleWall');
                 // text
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', 'Rescue The Moon is a singleplayer RPG C# coding project I was working on for 5 months during the ' +
-                    'second semester of my Augmented and Virtual Reality Design studies (made with Unity).');
+                projectTextEl.setAttribute('value', 'A mixed reality local multiplayer game. Two players compete by throwing virtual units onto their side of a physical powerwall while a third participant from the audience can influence the match.');
 
                 // elements
-                playProjectVideo('assets/Videos/RTM.mp4');
+                playProjectVideo('assets/Videos/BattleWallShortGameplay.mp4');
                 break;
 
             case "project2":
@@ -84,7 +86,7 @@ function handleSelection() {
                 headerEl.setAttribute('value', 'Goethe’s Puppet Theater (2025)');
                 // text
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', 'A mixed reality application, created with Unity. We combined AI with motion captured animations to bring puppets from Goethes universe to live.');
+                projectTextEl.setAttribute('value', 'A mixed reality application, created with Unity. The user can experience a fully AI driven play with motion captured puppets from the universe of Goethe.');
                 // elements
                 playProjectVideo('assets/Videos/GPT.mp4');
                 _puppetsButton.setAttribute('visible', true);
@@ -94,12 +96,49 @@ function handleSelection() {
                 galleryIsActive = false;
                 // header
                 headerEl.setAttribute('visible', true)
+                headerEl.setAttribute('value', 'Rescue The Moon (2023)');
+                // text
+                projectTextEl.setAttribute('visible', true);
+                projectTextEl.setAttribute('value', 'A singleplayer RPG C# coding project I was working on for 5 months during the ' +
+                    'second semester of my Augmented and Virtual Reality Design studies (made with Unity).');
+                // elements
+                playProjectVideo('assets/Videos/RTM.mp4');
+                break;
+
+            case "project4":
+                galleryIsActive = false;
+                // header
+                headerEl.setAttribute('visible', true)
+                headerEl.setAttribute('value', 'Arduino RC Game');
+                // text
+                projectTextEl.setAttribute('visible', true);
+                projectTextEl.setAttribute('value', 'Unity prototype where players drive an RC car with a self-built hand gesture controller. The controller works with an Arduino-powered system using a gyroscope for tilt input and a flex sensor to detect lifting motions of the vehicle. Connection via bluetooth');
+                // elements
+                playProjectVideo('assets/Videos/ArduinoGame.mp4');
+                break;
+
+            case "project5":
+                galleryIsActive = false;
+                // header
+                headerEl.setAttribute('visible', true)
+                headerEl.setAttribute('value', 'Saving Angkor Wat (2024)');
+                // text
+                projectTextEl.setAttribute('visible', true);
+                projectTextEl.setAttribute('value', '3rd semester VR Project created with Unity. The user has to save the temple by repairing the water canals.');
+                // elements
+                playProjectVideo('assets/Videos/SavingAngkorWat.mp4');
+                break;
+
+            case "project6":
+                galleryIsActive = false;
+                // header
+                headerEl.setAttribute('visible', true)
                 headerEl.setAttribute('value', 'Ascension to Olympus (2024)');
                 // text
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', '"An environment showcase in the ancient Greek style, developed using Unreal Engine 5. In this project, I applied various guidance techniques that I learned in a universal level design course to orient the player through the level.');
+                projectTextEl.setAttribute('value', '"An environment showcase in the ancient Greek style, developed using Unreal Engine 5.');
                 // elements
-                playProjectVideo('videos/AtO.mp4');
+                playProjectVideo('assets/Videos/AscensionToOlympus.mp4');
                 break;
 
             case "aboutMe":
@@ -211,12 +250,18 @@ function HandleGallery() {
 
 
 // Event listeners
-_projectRTM.addEventListener('click', handleSelection);
-_projectRTM.addEventListener('touchstart', handleSelection);
+_project1.addEventListener('click', handleSelection);
+_project1.addEventListener('touchstart', handleSelection);
 _project2.addEventListener('click', handleSelection);
 _project2.addEventListener('touchstart', handleSelection);
 _project3.addEventListener('click', handleSelection);
 _project3.addEventListener('touchstart', handleSelection);
+_project4.addEventListener('click', handleSelection);
+_project4.addEventListener('touchstart', handleSelection);
+_project5.addEventListener('click', handleSelection);
+_project5.addEventListener('touchstart', handleSelection);
+_project6.addEventListener('click', handleSelection);
+_project6.addEventListener('touchstart', handleSelection);
 _aboutMe.addEventListener('click', handleSelection);
 _aboutMe.addEventListener('touchstart', handleSelection);
 _homepage.addEventListener('click', OpenHomepage);
