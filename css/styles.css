@@ -177,7 +177,7 @@ body {
 .project-card:hover .hover-gif { opacity: 1; }
 .section-divider { width: 100%; margin: 50px 0; border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; }
-.project-tools-section { max-width: 800px; margin: 50px auto; text-align: center; padding: 0 20px; }
+.project-tools-section { max-width: 800px; margin: 30px auto; text-align: center; padding: 0 20px; }
 .project-tools-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .detail-tool-card { background: rgba(255, 255, 255, 0.05); padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 10px; transition: 0.3s; }
 .detail-tool-logo { width: 24px; height: 24px; object-fit: contain; }

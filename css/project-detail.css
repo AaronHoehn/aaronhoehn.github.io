@@ -62,6 +62,10 @@
     background-image: url('../assets/Backgrounds/VRConcertBackground.png');
 }
 
+#AstroBelt-bg {
+    background-image: url('../assets/Backgrounds/AstroBeltBackground.png');
+}
+
 /* Basis-Klasse für Positionierung */
 .project-overlay {
     position: fixed;
@@ -83,7 +87,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     max-width: 1200px;
-    margin: 100px auto 50px auto;
+    margin: 100px auto 10px auto;
     padding: 20px;
 }
 
@@ -141,7 +145,7 @@
     width: 800px;
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 /* Galerie Bereich */
