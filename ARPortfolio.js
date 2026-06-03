@@ -145,7 +145,7 @@ function handleSelection() {
                 galleryIsActive = false;
                 profilePictureEL.setAttribute('visible', true);
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', 'Hello, I\'m Aaron Höhn – an XR Designer and Developer based in Germany (Heidelberg/Darmstadt).\n' +
+                projectTextEl.setAttribute('value', 'Hello, I\'m Aaron, an XR Designer and Developer based in Germany (Heidelberg/Darmstadt).\n' +
                     'With a strong focus on Technical Art, I’m passionate about blending the real and virtual worlds through emerging technologies. I\'m driven by curiosity and creativity, always exploring new ways to bring innovative ideas to life in immersive and interactive experiences.');
                 break;
                 
