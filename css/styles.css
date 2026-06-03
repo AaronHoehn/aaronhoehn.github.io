@@ -233,3 +233,10 @@ body {
 .side-back-btn.is-visible {
     left: 0;
 }
+
+/* --- HIER DIE NEUE ANPASSUNG FÜR MOBILE --- */
+@media (max-width: 768px) {
+    .side-back-btn {
+        display: none !important;
+    }
+}
