@@ -58,6 +58,10 @@
     background-image: url('../assets/Backgrounds/SavingAngkorWatBackground.jpg');
 }
 
+#VRConcert-bg {
+    background-image: url('../assets/Backgrounds/VRConcertBackground.png');
+}
+
 /* Basis-Klasse für Positionierung */
 .project-overlay {
     position: fixed;
