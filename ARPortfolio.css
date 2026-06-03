@@ -23,26 +23,38 @@
     display: none;
 }
 
-.back-to-portfolio-btn {
+html, body {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important; /* Wichtig: Scrollen unterbinden */
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed !important; /* Fixiert den Body am Viewport */
+}
+
+/* Button Container muss den gesamten Viewport ignorieren und fest sein */
+.button-container {
     position: fixed !important;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999999 !important; /* Hält den Button immer im Vordergrund */
-    pointer-events: auto !important; /* Stellt sicher, dass Klicks ankommen */
-    
-    /* Design */
+    bottom: 20px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    pointer-events: none !important; /* Damit er nicht den AR-Click blockiert */
+}
+
+.back-to-portfolio-btn {
+    pointer-events: auto !important; /* Button selbst klickbar */
+    display: block !important;
     padding: 12px 24px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 2px solid #ffffff;
-    border-radius: 30px;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 30px !important;
+    text-decoration: none !important;
+    font-family: sans-serif !important;
+    z-index: 9999999 !important;
 }
 
 /* Sicherstellen, dass die Szene den Button nicht überlagert */

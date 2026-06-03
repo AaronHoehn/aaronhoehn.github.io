@@ -145,7 +145,7 @@ function playProjectVideo(src) {
 
 function OpenHomepage()
 {
-    window.open('https://aaron-hoehn-portfolio.jimdofree.com/', '_blank');
+window.location.href = '../index.html';
 }
 
 function HandlePuppets(condition)
