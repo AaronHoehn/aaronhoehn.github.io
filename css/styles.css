@@ -250,3 +250,24 @@ body {
         display: none !important;
     }
 }
+
+/* --- invisible area --- */
+.modal {
+    display: none; /* Versteckt das gesamte Modal inklusive 'x' */
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
