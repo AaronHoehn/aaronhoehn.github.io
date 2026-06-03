@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreProjectsContainer = document.getElementById('more-projects-container');
 
     if (showMoreBtn && moreProjectsContainer) {
-        
-        // Initialer Check: Status aus localStorage laden
         if (localStorage.getItem("projectsExpanded") === "true") {
             moreProjectsContainer.classList.remove('hidden-content');
             moreProjectsContainer.classList.add('show-content');
@@ -15,33 +13,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
         showMoreBtn.addEventListener('click', () => {
             const isHidden = moreProjectsContainer.classList.contains('hidden-content');
-            
             if (isHidden) {
-                // Aufklappen
                 moreProjectsContainer.classList.remove('hidden-content');
                 moreProjectsContainer.classList.add('show-content');
                 showMoreBtn.textContent = 'Show Less';
-                localStorage.setItem("projectsExpanded", "true"); // Speichern
+                localStorage.setItem("projectsExpanded", "true");
             } else {
-                // Zuklappen
                 moreProjectsContainer.classList.remove('show-content');
                 moreProjectsContainer.classList.add('hidden-content');
                 showMoreBtn.textContent = 'Show More Projects';
-                localStorage.setItem("projectsExpanded", "false"); // Speichern
+                localStorage.setItem("projectsExpanded", "false");
                 moreProjectsContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
         });
     }
 
-    // --- 2. Project Card Hover Video Logik ---
+    // --- 2. Project Card Hover & Auto-Play (Intersection Observer) ---
+    // Desktop: Hover, Mobile: Scroll-In-View
+    const observerOptions = {
+        root: null,
+        threshold: 0.5 // Startet, sobald das Element zur Hälfte sichtbar ist
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target.querySelector('.hover-gif');
+            if (!video) return;
+
+            if (entry.isIntersecting) {
+                video.play().catch(e => console.log("Autoplay blockiert:", e));
+            } else {
+                video.pause();
+                video.currentTime = 0; // Setzt Video bei Verlassen zurück[cite: 16]
+            }
+        });
+    }, observerOptions);
+
     document.querySelectorAll('.project-card').forEach(card => {
+        // Desktop Hover Logik beibehalten
         const video = card.querySelector('.hover-gif');
-        if (video && video.tagName === 'VIDEO') {
+        if (video) {
             card.addEventListener('mouseenter', () => video.play());
             card.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 0;
             });
+            // Intersection Observer zur Beobachtung hinzufügen
+            videoObserver.observe(card);
         }
     });
 
@@ -83,26 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
 
-// --- 5. Scroll-Position speichern und wiederherstellen ---
-    
-document.addEventListener('DOMContentLoaded', () => {
-
-    // ... (deine vorhandene "Show More" und andere Logik) ...
-
-    // --- 5. Scroll-Position nur auf der Startseite (index.html) wiederherstellen ---
-    
-    // Wir prüfen, ob wir auf der index.html sind (oder ob es die Wurzel-Seite ist)
+    // --- 5. Scroll-Position speichern und wiederherstellen ---
     const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
 
     if (isIndexPage) {
-        // Beim Verlassen der Index-Seite die Position speichern
         window.addEventListener('beforeunload', () => {
             localStorage.setItem("scrollPosition", window.scrollY);
         });
 
-        // Nach dem Laden der Index-Seite zur gespeicherten Position springen
         window.addEventListener('load', () => {
             const savedScroll = localStorage.getItem("scrollPosition");
             if (savedScroll) {
@@ -112,8 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else {
-        // Wenn wir NICHT auf der Index-Seite sind, löschen wir den Scroll-Wert
-        // oder ignorieren ihn einfach, damit die Seite oben startet
         window.scrollTo(0, 0);
     }
 });
