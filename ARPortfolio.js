@@ -73,7 +73,7 @@ function handleSelection() {
                     'second semester of my Augmented and Virtual Reality Design studies (made with Unity).');
 
                 // elements
-                playProjectVideo('videos/RTMvideo.mp4');
+                playProjectVideo('assets/Videos/RTM.mp4');
                 break;
 
             case "project2":
@@ -84,9 +84,9 @@ function handleSelection() {
                 headerEl.setAttribute('value', 'Goethe’s Puppet Theater (2025)');
                 // text
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', 'Goethe’s Puppet Theater is a Mixed Reality application developed for the Goethe Museum by a team of three during our fifth semester. Our idea was to bring fictional or real characters from Goethe’s life to life and explore how they would interact with each other in the form of a theatrical play. We used Unity as the foundation of the project, and to simulate the conversations, we utilized ChatGPT. The dialogues are generated live. In addition, we motion-captured over 80 animations. The AI selects animations that match the dialogue to give the conversation more realism. We also presented this project at the "Showtech" in Berlin in 2025. Additionally, we implemented ragdoll and cloth physics to make the user interaction more convincing.');
+                projectTextEl.setAttribute('value', 'A mixed reality application, created with Unity. We combined AI with motion captured animations to bring puppets from Goethes universe to live.');
                 // elements
-                playProjectVideo('videos/GPTvideo1.mp4');
+                playProjectVideo('assets/Videos/GPT.mp4');
                 _puppetsButton.setAttribute('visible', true);
                 break;
 
@@ -97,7 +97,7 @@ function handleSelection() {
                 headerEl.setAttribute('value', 'Ascension to Olympus (2024)');
                 // text
                 projectTextEl.setAttribute('visible', true);
-                projectTextEl.setAttribute('value', '"Ascension to Olympus" is an environment showcase in the ancient Greek style, developed using Unreal Engine 5. In this project, I applied various guidance techniques that I learned in a universal level design course to orient the player through the level. In addition, I researched the associated architecture and modeled all the buildings as well as a large portion of the plants and assets myself. Furthermore, I scanned, rigged, and placed myself as a large statue in the scene.');
+                projectTextEl.setAttribute('value', '"An environment showcase in the ancient Greek style, developed using Unreal Engine 5. In this project, I applied various guidance techniques that I learned in a universal level design course to orient the player through the level.');
                 // elements
                 playProjectVideo('videos/AtO.mp4');
                 break;
