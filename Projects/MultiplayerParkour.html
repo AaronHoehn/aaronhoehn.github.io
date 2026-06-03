@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Parkour Prototype | Aaron Hoehn</title>
+    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project-detail.css">
+    <script src="../js/script.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="MultiplayerParkour-bg" class="project-bg"></div>
+    <div class="project-overlay" style="background: rgba(0, 0, 0, 0.7);">></div>
+
+    <main class="battlewall-container">
+          <div class="video-column">
+            <div class="video-wrapper">
+                <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/MultiplayerParkour.png">
+                    <source src="../assets/Videos/MultiplayerParkour.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="text-column">
+            <h1>Multiplayer Parkour-Controller Prototype (2025)</h1>
+
+            <div class="project-meta-tags" style="margin-bottom: 20px;">
+                <span class="meta-tag">Unity</span>
+                <span class="meta-tag">Multiplayer</span>
+                <span class="meta-tag">Motion Capture</span>
+                <span class="meta-tag">OptiTrack</span>
+            </div>
+
+            <h3 class="subtitle">2nd Semester Solo Project</h3>
+            <p>This project began as a test environment in which I developed a custom third-person parkour controller and integrated my own motion capture animations. The animations were recorded using the OptiTrack motion capture system.</p>
+            <p>Building on this foundation, I expanded the project into a multiplayer prototype in Unity. I successfully synchronized player movement and animations across the network using Photon PUN 2. This was my first multiplayer project and gave me valuable insight into networked gameplay systems, animation synchronization, and real-time player interaction.</p>
+        </div>
+    </main>
+
+    <section class="project-tools-section">
+        <h3 class="project-tools-heading">Tools & Technologies</h3>
+        <div class="project-tools-grid">
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Unity.png" alt="Unity" class="detail-tool-logo">
+                <span class="detail-tool-name">Unity</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Blender.png" alt="Blender" class="detail-tool-logo">
+                <span class="detail-tool-name">Blender</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Photon.png" alt="Photon" class="detail-tool-logo">
+                <span class="detail-tool-name">Photon</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/motive.png" alt="Motive" class="detail-tool-logo">
+                <span class="detail-tool-name">Motive</span>
+            </div>
+
+            </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+       <h2 class="gallery-heading">My Contributions</h2>
+
+    <section class="additional-gallery">
+        <div class="gallery-row">
+            <video class="gallery-media" autoplay muted loop playsinline>
+            <source src="../assets/MultiplayerParkour/Controller.mp4" type="video/mp4">
+            </video>            
+            <p class="gallery-text">Controller with Root Motion and Blend Trees.</p>
+        </div>
+
+        <div class="gallery-row">
+           <video class="gallery-media" autoplay muted loop playsinline>
+            <source src="../assets/MultiplayerParkour/MoCap.mp4" type="video/mp4">
+            </video>  
+            <p class="gallery-text">Motioncapture with the OptiTrack Motion capture system</p>
+        </div>
+
+        <div class="gallery-row">
+           <video class="gallery-media" autoplay muted loop playsinline>
+            <source src="../assets/MultiplayerParkour/Retargeting.mp4" type="video/mp4">
+            </video>  
+            <p class="gallery-text">Retargeting in Blender with the Rococo plugin</p>
+        </div>
+    </section>
+
+
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
+            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
+        </div>
+
+</body>
+</html>

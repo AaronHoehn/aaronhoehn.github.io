@@ -50,6 +50,10 @@
     background-image: url('../assets/Backgrounds/BachelorProjectBackground.png');
 }
 
+#MultiplayerParkour-bg {
+    background-image: url('../assets/Backgrounds/MultiplayerParkour.png');
+}
+
 /* Basis-Klasse für Positionierung */
 .project-overlay {
     position: fixed;
