@@ -184,7 +184,20 @@ body {
 .card-overlay h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 5px; }
 .card-overlay p { font-size: 0.9rem; color: #a0aec0; font-family: 'Roboto Mono', monospace; }
 .project-card:hover .project-static-img { transform: scale(1.05); opacity: 0; }
-.project-card:hover .hover-gif { opacity: 1; }
+
+/* Sorge dafür, dass das Video beim Hover oder bei Aktivierung auf Mobile abgespielt/angezeigt wird */
+.project-card:hover .hover-gif,
+.project-card.is-active .hover-gif {
+    opacity: 1;
+}
+
+/* Optional: Verhindert, dass das statische Bild das Video überlagert */
+.project-card:hover .project-static-img,
+.project-card.is-active .project-static-img {
+    transform: scale(1.05);
+    opacity: 0;
+}
+
 .section-divider { width: 100%; margin: 50px 0; border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; }
 .project-tools-section { max-width: 800px; margin: 30px auto; text-align: center; padding: 0 20px; }

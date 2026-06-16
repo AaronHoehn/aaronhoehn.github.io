@@ -28,40 +28,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Project Card Hover & Auto-Play (Intersection Observer) ---
-    // Desktop: Hover, Mobile: Scroll-In-View
-    const observerOptions = {
-        root: null,
-        threshold: 0.5 // Startet, sobald das Element zur Hälfte sichtbar ist
-    };
+    // --- 2. Project Card Hover (Desktop) & Center-Scroll Auto-Play (Mobile) ---
+    const projectCards = document.querySelectorAll('.project-card');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target.querySelector('.hover-gif');
-            if (!video) return;
-
-            if (entry.isIntersecting) {
-                video.play().catch(e => console.log("Autoplay blockiert:", e));
-            } else {
-                video.pause();
-                video.currentTime = 0; // Setzt Video bei Verlassen zurück[cite: 16]
+    if (!isTouchDevice) {
+        // --- DESKTOP LOGIK (Hover) ---
+        projectCards.forEach(card => {
+            const video = card.querySelector('.hover-gif');
+            if (video) {
+                card.addEventListener('mouseenter', () => {
+                    video.play().catch(e => console.log("Playback blocked:", e));
+                });
+                card.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
             }
         });
-    }, observerOptions);
+    } else {
+        // --- MOBILE LOGIK (Center-Scroll) ---
+        const checkCenterProject = () => {
+            const viewportCenter = window.innerHeight / 2;
+            let closestCard = null;
+            let minDistance = Infinity;
 
-    document.querySelectorAll('.project-card').forEach(card => {
-        // Desktop Hover Logik beibehalten
-        const video = card.querySelector('.hover-gif');
-        if (video) {
-            card.addEventListener('mouseenter', () => video.play());
-            card.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0;
+            projectCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                // Berechne die vertikale Mitte der aktuellen Projektkarte
+                const cardCenter = rect.top + rect.height / 2;
+                // Abstand zur Bildschirmmitte ermitteln
+                const distance = Math.abs(viewportCenter - cardCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestCard = card;
+                }
             });
-            // Intersection Observer zur Beobachtung hinzufügen
-            videoObserver.observe(card);
-        }
-    });
+
+            // Aktivieren der zentralen Karte, Deaktivieren aller anderen
+            projectCards.forEach(card => {
+                const video = card.querySelector('.hover-gif');
+                if (!video) return;
+
+                if (card === closestCard) {
+                    if (video.paused) {
+                        card.classList.add('is-active');
+                        video.play().catch(e => console.log("Autoplay blocked on mobile:", e));
+                    }
+                } else {
+                    card.classList.remove('is-active');
+                    video.pause();
+                    video.currentTime = 0; // Setzt das Video bei Verlassen zurück
+                }
+            });
+        };
+
+        // Event-Listener für geschmeidiges Tracking beim Scrollen auf dem Smartphone
+        window.addEventListener('scroll', checkCenterProject, { passive: true });
+        window.addEventListener('resize', checkCenterProject);
+        
+        // Initialer Aufruf mit minimaler Verzögerung nach dem Laden der Seite
+        setTimeout(checkCenterProject, 300);
+    }
 
     // --- 3. Lightbox (Bild-Zoom) Logik ---
     if (!document.getElementById('image-modal')) {
