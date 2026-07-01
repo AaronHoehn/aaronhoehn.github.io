@@ -11,7 +11,6 @@
 
     <script src="../js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -57,55 +56,108 @@
                 <img src="../assets/Logos/Blender.png" alt="Blender" class="detail-tool-logo">
                 <span class="detail-tool-name">Blender</span>
             </div>
-
-            </div>
+        </div>
     </section>
 
     <div class="section-divider"></div>
 
-
+<!-- Scene -->
     <section class="asset-gallery-section">
         <h3 class="gallery-heading">Scene</h3>
-        <div class="equal-grid">
-            <img src="../assets/BachelorProject/Bachelor1.png" class="masonry-item zoomable">
-            <img src="../assets/BachelorProject/Bachelor2.png" class="masonry-item zoomable">
-            <img src="../assets/BachelorProject/Bachelor3.png" class="masonry-item zoomable">
+        <div class="equal-grid landscape-grid">
+            
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Bachelor1.png" alt="Scene 1" class="equal-item zoomable" data-caption="">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Bachelor2.png" alt="Scene 2" class="equal-item zoomable" data-caption="">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Bachelor3.png" alt="Scene 3" class="equal-item zoomable" data-caption="">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text"></p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
-    <section class="additional-gallery">
-            <h3 class="gallery-heading">Implementation</h3>
-        <div class="gallery-row">
-            <img src="../assets/BachelorProject/Bachelor4.png" alt="LipSync 5" class="masonry-item zoomable">
-            <p class="gallery-text">Lip Sync using shapekeys from Oculus Visemes</p>
-        </div>
-        <div class="gallery-row">
-            <img src="../assets/BachelorProject/Bachelor5.png" alt="RPM" class="masonry-item zoomable">
-            <p class="gallery-text">Characters created with Ready Player Me and Convai used for AI</p>
-        </div>
-        <div class="gallery-row">
-            <img src="../assets/BachelorProject/Assets.png" alt="Assets" class="masonry-item zoomable">
-            <p class="gallery-text">Modular Assets created in Blender and textured in Substance Painter</p>
-        </div>
-        <div class="gallery-row">
-            <img src="../assets/BachelorProject/ConvaiEmotions.PNG" alt="Emotions" class="masonry-item zoomable">
-            <p class="gallery-text">Individual emotions for each AI-driven character</p>
+    <!-- Implementation -->
+    <section class="project-media-section">
+        <h3 class="gallery-heading">Implementation</h3>
+        <div class="equal-grid landscape-grid">        
+            
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Bachelor4.png" alt="LipSync" class="equal-item zoomable" data-caption="Lip Sync using shapekeys from Oculus Visemes">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Lip Sync using shapekeys from Oculus Visemes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Bachelor5.png" alt="RPM" class="equal-item zoomable" data-caption="Characters created with Ready Player Me and Convai used for AI">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Characters created with Ready Player Me and Convai used for AI</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/Assets.png" alt="Assets" class="equal-item zoomable" data-caption="Modular Assets created in Blender and textured in Substance Painter">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Modular Assets created in Blender and textured in Substance Painter</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item-wrapper">
+                <div class="equal-item-container">
+                    <img src="../assets/BachelorProject/ConvaiEmotions.PNG" alt="Emotions" class="equal-item zoomable" data-caption="Individual emotions for each AI-driven character">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Individual emotions for each AI-driven character</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <!-- Zurück-Button -->
+    <div class="button-wrapper back-button-container">
+        <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+    </div>
 
-            <!-- Zurück-Button -->
-        <div class="button-wrapper back-button-container">
-            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
-        </div>
+    <div id="side-back-button" class="side-back-btn">
+        <a href="../index.html">← Portfolio</a>
+    </div>
 
-        <div id="side-back-button" class="side-back-btn">
-            <a href="../index.html">← Portfolio</a>
-        </div>
-
+    <!-- Vollständig repariertes Lightbox Modal inklusive Navigations-Pfeilen und Beschriftungsbox -->
     <div id="image-modal" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="full-image">
+        
+        <button class="lightbox-nav-btn lightbox-prev">&#10094;</button>
+        <button class="lightbox-nav-btn lightbox-next">&#10095;</button>
+        
+        <img class="modal-content" id="full-image" alt="Vollbild-Ansicht">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 </body>
 </html>

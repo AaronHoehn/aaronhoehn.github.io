@@ -88,14 +88,14 @@
     }
 
     // --- 3. Lightbox (Bild- & Video-Zoom mit Navigation & Beschreibungstext) Logik ---
-    if (!document.getElementById('image-modal')) {
+    let modal = document.getElementById('image-modal');
+    
+    // Falls das Modal gar nicht existiert, erstellen wir es komplett neu
+    if (!modal) {
         const modalHTML = `
             <div id="image-modal" class="modal">
                 <span class="close">&times;</span>
-                
-                <!-- HIER: Das neue Textfeld für deine Erklärungen oben drüber -->
                 <div id="lightbox-caption" class="lightbox-caption"></div>
-                
                 <button class="lightbox-nav-btn lightbox-prev">&#10094;</button>
                 <div id="lightbox-container" style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
                     <!-- Inhalt wird dynamisch injiziert -->
@@ -104,10 +104,24 @@
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
+        modal = document.getElementById('image-modal');
     }
 
-    const modal = document.getElementById("image-modal");
-    const container = document.getElementById("lightbox-container");
+    // Falls das Modal da war, aber die innere Struktur für das dynamische Skript fehlt (wie im alten Zustand der HTML)
+    let container = document.getElementById("lightbox-container");
+    if (!container && modal) {
+        // Fallback: Nutze das vorhandene full-image oder baue die Struktur im bestehenden Modal um
+        const staticImg = document.getElementById("full-image");
+        if (staticImg) {
+            // Umhülle das Bild mit dem benötigten Container, falls nicht vorhanden
+            container = document.createElement('div');
+            container.id = "lightbox-container";
+            container.style.cssText = "display:flex; justify-content:center; align-items:center; width:100%; height:100%;";
+            staticImg.parentNode.insertBefore(container, staticImg);
+            container.appendChild(staticImg);
+        }
+    }
+
     const captionContainer = document.getElementById("lightbox-caption");
     const prevBtn = modal.querySelector(".lightbox-prev");
     const nextBtn = modal.querySelector(".lightbox-next");
@@ -117,6 +131,7 @@
 
     // Funktion, die das Medium basierend auf dem aktuellen Index rendert
     function renderLightboxElement() {
+        if (!container) return;
         container.innerHTML = ""; // Container leeren
         const activeElement = currentMediaElements[currentIndex];
 
@@ -124,11 +139,13 @@
 
         // --- Beschreibungstext setzen ---
         const captionText = activeElement.getAttribute('data-caption');
-        if (captionText) {
-            captionContainer.textContent = captionText;
-            captionContainer.style.display = 'block';
-        } else {
-            captionContainer.style.display = 'none'; // Verstecken, falls kein Text hinterlegt wurde
+        if (captionContainer) {
+            if (captionText) {
+                captionContainer.textContent = captionText;
+                captionContainer.style.display = 'block';
+            } else {
+                captionContainer.style.display = 'none';
+            }
         }
 
         // --- Medium rendern ---
@@ -143,16 +160,19 @@
             const imgEl = document.createElement('img');
             imgEl.src = activeElement.src;
             imgEl.className = "modal-content";
+            imgEl.alt = "Lightbox Ansicht";
             container.appendChild(imgEl);
         }
     }
 
     function showNext() {
+        if (currentMediaElements.length <= 1) return;
         currentIndex = (currentIndex + 1) % currentMediaElements.length;
         renderLightboxElement();
     }
 
     function showPrev() {
+        if (currentMediaElements.length <= 1) return;
         currentIndex = (currentIndex - 1 + currentMediaElements.length) % currentMediaElements.length;
         renderLightboxElement();
     }
@@ -163,25 +183,31 @@
             currentMediaElements = Array.from(document.querySelectorAll('.zoomable'));
             currentIndex = currentMediaElements.indexOf(e.target);
 
-            modal.style.display = "block";
-            renderLightboxElement();
+            if (modal) {
+                modal.style.display = "flex"; // Nutze flex für saubere Zentrierung
+                renderLightboxElement();
+            }
         }
     });
 
-    // Event Listener für die Pfeil-Buttons
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showNext();
-    });
+    // Event Listener für die Pfeil-Buttons (nur wenn sie existieren)
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showNext();
+        });
+    }
 
-    prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showPrev();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showPrev();
+        });
+    }
 
     // Tastatur-Support (Pfeiltasten links/rechts + Esc)
     document.addEventListener('keydown', (e) => {
-        if (modal.style.display === "block") {
+        if (modal && modal.style.display === "flex") {
             if (e.key === "ArrowRight") showNext();
             if (e.key === "ArrowLeft") showPrev();
             if (e.key === "Escape") closeModal();
@@ -189,21 +215,28 @@
     });
 
     function closeModal() {
+        if (!modal) return;
         modal.style.display = "none";
-        const activeVideo = container.querySelector('video');
-        if (activeVideo) {
-            activeVideo.pause();
+        if (container) {
+            const activeVideo = container.querySelector('video');
+            if (activeVideo) {
+                activeVideo.pause();
+            }
+            container.innerHTML = "";
         }
-        container.innerHTML = "";
-        captionContainer.textContent = ""; // Text leeren beim Schließen
+        if (captionContainer) {
+            captionContainer.textContent = "";
+        }
     }
 
     // Schließen bei Klick auf Hintergrund oder Schließen-Symbol
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('close') || e.target === container) {
-            closeModal();
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('close') || e.target === container) {
+                closeModal();
+            }
+        });
+    }
 
     // --- 4. Side Back Button Logik ---
     const sideBtn = document.getElementById('side-back-button');

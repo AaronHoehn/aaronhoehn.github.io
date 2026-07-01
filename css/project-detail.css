@@ -504,31 +504,41 @@ body {
 
 .comparison-item:hover { transform: scale(1.02); }
 
-/* --- Equal Grid & Hover Caption Overlays --- */
+
+/* --- Equal Grid & Untertitel (PC: Hover over image, Mobile: Text below) --- */
 .equal-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 30px;
     max-width: 1000px;
     margin: 30px auto;
     padding: 0 20px;
     width: 100%;
 }
 
+/* Der äußere Grid-Item Wrapper fungiert als Anker für das absolute Overlay auf PC */
 .grid-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Innerer Container für das Seitenverhältnis der Medien */
+.equal-item-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1; /* Standard: Quadratisch */
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid rgba(var(--accent-color-rgb), 0.3);
-    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.grid-item-wrapper:hover { 
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
+/* Spezifisches Querformat für die Klassen-Kombination .landscape-grid */
+.landscape-grid .equal-item-container {
+    aspect-ratio: 16 / 9;
 }
 
 .equal-item {
@@ -541,29 +551,33 @@ body {
     display: block;
 }
 
+/* Hover-Effekte auf den Medien-Container beschränken */
+.grid-item-wrapper:hover .equal-item-container { 
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
+}
+
 .grid-item-wrapper:hover .equal-item {
     transform: scale(1.04);
 }
 
+/* PC-STANDARD: Beschriftung blendet sich als schickes Overlay beim Hovern ÜBER dem Bild ein */
 .hover-caption-overlay {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.6) 80%, rgba(13, 15, 18, 0.4) 100%);
     padding: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background: linear-gradient(to top, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.4) 70%, transparent 100%);
     opacity: 0;
-    transition: opacity 0.3s ease;
     z-index: 5;
-    pointer-events: none;
-}
-
-.grid-item-wrapper:hover .hover-caption-overlay {
-    opacity: 1;
+    border-radius: 8px;
+    pointer-events: none; /* Verhindert Flackern der Maus */
+    transition: opacity 0.3s ease;
 }
 
 .hover-caption-text {
@@ -571,10 +585,21 @@ body {
     color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.4;
-    text-align: center;
+    text-align: left;
     border-left: 2px solid var(--accent-color);
     padding-left: 10px;
+    transition: color 0.3s ease;
 }
+
+/* PC Hover-Aktivierung */
+.grid-item-wrapper:hover .hover-caption-overlay {
+    opacity: 1;
+}
+
+.grid-item-wrapper:hover .hover-caption-text {
+    color: var(--accent-color);
+}
+
 
 /* --- Globale Lightbox Controls --- */
 .lightbox-nav-btn {
@@ -665,35 +690,27 @@ body {
     .equal-grid {
         grid-template-columns: 1fr !important; 
         padding: 0 20px;
-        gap: 25px; 
+        gap: 35px; 
     }
 
-    .grid-item-wrapper {
-        aspect-ratio: auto; 
-        width: 100%;
-    }
-
-    .equal-item {
-        width: 100%;
-        height: auto; 
-        object-fit: contain;
-    }
-
+    /* MOBILE ANPASSUNG: Text bricht aus dem Overlay aus und rendert statisch unten drunter */
     .hover-caption-overlay {
-        position: relative; 
-        opacity: 1 !important;
-        background: transparent;
-        padding: 10px 0 0 0;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
         height: auto;
+        padding: 12px 0 0 0;
+        background: transparent;
+        opacity: 1 !important; /* Immer sichtbar auf Mobile */
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 
     .hover-caption-text {
-        text-align: left; 
         font-size: 0.85rem;
-    }
-
-    .grid-item-wrapper:hover .equal-item {
-        transform: none;
+        color: #ffffff;
     }
 
     /* Lightbox Mobile Navigation & Controls */
