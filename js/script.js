@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. "Show More Projects" Logik mit localStorage ---
     const showMoreBtn = document.getElementById('btn-toggle-projects');
@@ -55,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             projectCards.forEach(card => {
                 const rect = card.getBoundingClientRect();
-                // Berechne die vertikale Mitte der aktuellen Projektkarte
                 const cardCenter = rect.top + rect.height / 2;
-                // Abstand zur Bildschirmmitte ermitteln
                 const distance = Math.abs(viewportCenter - cardCenter);
 
                 if (distance < minDistance) {
@@ -66,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Aktivieren der zentralen Karte, Deaktivieren aller anderen
             projectCards.forEach(card => {
                 const video = card.querySelector('.hover-gif');
                 if (!video) return;
@@ -79,43 +76,132 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     card.classList.remove('is-active');
                     video.pause();
-                    video.currentTime = 0; // Setzt das Video bei Verlassen zur�ck
+                    video.currentTime = 0;
                 }
             });
         };
 
-        // Event-Listener f�r geschmeidiges Tracking beim Scrollen auf dem Smartphone
         window.addEventListener('scroll', checkCenterProject, { passive: true });
         window.addEventListener('resize', checkCenterProject);
         
-        // Initialer Aufruf mit minimaler Verz�gerung nach dem Laden der Seite
         setTimeout(checkCenterProject, 300);
     }
 
-    // --- 3. Lightbox (Bild-Zoom) Logik ---
+    // --- 3. Lightbox (Bild- & Video-Zoom mit Navigation & Beschreibungstext) Logik ---
     if (!document.getElementById('image-modal')) {
         const modalHTML = `
             <div id="image-modal" class="modal">
                 <span class="close">&times;</span>
-                <img class="modal-content" id="full-image">
+                
+                <!-- HIER: Das neue Textfeld für deine Erklärungen oben drüber -->
+                <div id="lightbox-caption" class="lightbox-caption"></div>
+                
+                <button class="lightbox-nav-btn lightbox-prev">&#10094;</button>
+                <div id="lightbox-container" style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
+                    <!-- Inhalt wird dynamisch injiziert -->
+                </div>
+                <button class="lightbox-nav-btn lightbox-next">&#10095;</button>
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
     const modal = document.getElementById("image-modal");
-    const modalImg = document.getElementById("full-image");
+    const container = document.getElementById("lightbox-container");
+    const captionContainer = document.getElementById("lightbox-caption");
+    const prevBtn = modal.querySelector(".lightbox-prev");
+    const nextBtn = modal.querySelector(".lightbox-next");
 
+    let currentMediaElements = [];
+    let currentIndex = 0;
+
+    // Funktion, die das Medium basierend auf dem aktuellen Index rendert
+    function renderLightboxElement() {
+        container.innerHTML = ""; // Container leeren
+        const activeElement = currentMediaElements[currentIndex];
+
+        if (!activeElement) return;
+
+        // --- Beschreibungstext setzen ---
+        const captionText = activeElement.getAttribute('data-caption');
+        if (captionText) {
+            captionContainer.textContent = captionText;
+            captionContainer.style.display = 'block';
+        } else {
+            captionContainer.style.display = 'none'; // Verstecken, falls kein Text hinterlegt wurde
+        }
+
+        // --- Medium rendern ---
+        if (activeElement.tagName.toLowerCase() === 'video') {
+            const videoEl = document.createElement('video');
+            videoEl.src = activeElement.src;
+            videoEl.className = "modal-content";
+            videoEl.controls = true;
+            videoEl.autoplay = true;
+            container.appendChild(videoEl);
+        } else {
+            const imgEl = document.createElement('img');
+            imgEl.src = activeElement.src;
+            imgEl.className = "modal-content";
+            container.appendChild(imgEl);
+        }
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % currentMediaElements.length;
+        renderLightboxElement();
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + currentMediaElements.length) % currentMediaElements.length;
+        renderLightboxElement();
+    }
+
+    // Klick auf ein Galerie-Element
     document.addEventListener('click', (e) => {
         if (e.target.matches('.zoomable')) {
+            currentMediaElements = Array.from(document.querySelectorAll('.zoomable'));
+            currentIndex = currentMediaElements.indexOf(e.target);
+
             modal.style.display = "block";
-            modalImg.src = e.target.src;
+            renderLightboxElement();
         }
     });
 
+    // Event Listener für die Pfeil-Buttons
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNext();
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrev();
+    });
+
+    // Tastatur-Support (Pfeiltasten links/rechts + Esc)
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") showNext();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "Escape") closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+        const activeVideo = container.querySelector('video');
+        if (activeVideo) {
+            activeVideo.pause();
+        }
+        container.innerHTML = "";
+        captionContainer.textContent = ""; // Text leeren beim Schließen
+    }
+
+    // Schließen bei Klick auf Hintergrund oder Schließen-Symbol
     modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('close')) {
-            modal.style.display = "none";
+        if (e.target === modal || e.target.classList.contains('close') || e.target === container) {
+            closeModal();
         }
     });
 

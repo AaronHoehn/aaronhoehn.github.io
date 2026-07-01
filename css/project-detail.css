@@ -241,9 +241,10 @@ body {
     margin: auto;
     display: block;
     max-width: 90%;
-    max-height: 80%;
+    max-height: 85vh; /* Nutzt maximal 85% der Bildschirmhöhe */
     margin-top: 5%;
     border-radius: 8px;
+    object-fit: contain; /* Behält das originale Seitenverhältnis im Vollbild bei */
 }
 
 .close {
@@ -303,7 +304,7 @@ body {
 .overlay-medium { background: rgba(0, 0, 0, 0.6); }
 .overlay-dark { background: rgba(0, 0, 0, 0.85); }
 
-/* --- Layout Anpassungen (Kritische Fixes) --- */
+/* --- Layout Anpassungen --- */
 .battlewall-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -321,7 +322,6 @@ body {
     width: 100%;
 }
 
-/* Hier lief das Video/GIF vorher über den Rand: */
 .project-gif {
     width: 100%;
     height: auto;
@@ -358,7 +358,7 @@ body {
 
 .text-column h1 {
     margin-bottom: 0;
-    font-size: 2.5rem; /* Flexible Basis-Größe */
+    font-size: 2.5rem;
 }
 
 .subtitle {
@@ -371,7 +371,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Trennlinie fixiert (Vorher harte 800px Breite!) */
 .section-divider {
     width: 100%;
     max-width: 800px;
@@ -396,12 +395,11 @@ body {
     margin-bottom: 80px;
 }
 
-/* Raster flexibel gestaltet */
 .gallery-row {
     display: grid;
     grid-template-columns: minmax(280px, 400px) 1fr;
     align-items: center;
-    gap: 20px; /* Mehr Platz zwischen Asset und Text */
+    gap: 20px;
     margin-bottom: 10px;
     width: 100%;
 }
@@ -465,7 +463,7 @@ body {
 }
 
 .video-row .video-wrapper {
-    flex: 1; /* Teilt den Platz gleichmäßig auf */
+    flex: 1;
 }
 
 /* Comparison */
@@ -490,7 +488,7 @@ body {
 
 .comparison-item:hover { transform: scale(1.02); }
 
-/* Equal Grid */
+/* --- Equal Grid & Hover Caption Overlays --- */
 .equal-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -501,20 +499,74 @@ body {
     width: 100%;
 }
 
-.equal-item {
+/* Container-Wrapper für die einzelnen Grid-Elemente */
+.grid-item-wrapper {
+    position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
     border-radius: 8px;
+    overflow: hidden;
     border: 1px solid rgba(var(--accent-color-rgb), 0.3);
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.equal-item:hover { transform: scale(1.02); }
+.grid-item-wrapper:hover { 
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
+}
+
+/* Das eigentliche Bild oder Video innerhalb des Wrappers */
+.equal-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: none; /* Rahmen wird jetzt sauber vom Wrapper verwaltet */
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.grid-item-wrapper:hover .equal-item {
+    transform: scale(1.04);
+}
+
+/* Die halbtransparente Textebene, die sich beim Hovern drüberlegt */
+.hover-caption-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.6) 80%, rgba(13, 15, 18, 0.4) 100%);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    pointer-events: none; /* Klicks gehen durch auf das zoomable Element */
+}
+
+.grid-item-wrapper:hover .hover-caption-overlay {
+    opacity: 1;
+}
+
+/* Styling für den Text auf dem Bild/Video */
+.hover-caption-text {
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    border-left: 2px solid var(--accent-color);
+    padding-left: 10px;
+}
 
 
 /* ==========================================================================
-   MEDIA QUERIES (Hier passiert die Magie für Mobile)
+    MEDIA QUERIES (Responsive Design für Mobile & Tablets)
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -522,26 +574,23 @@ body {
 }
 
 @media (max-width: 900px) {
-    /* Ändert das Hauptlayout von nebeneinander zu untereinander */
     .battlewall-container { 
         grid-template-columns: 1fr; 
-        margin-top: 40px; /* Weniger fetter Abstand oben auf Mobile */
+        margin-top: 40px;
         gap: 30px;
     }
     
-    /* Text-Kopfzeile bricht sonst unschön um */
     .text-column h1 {
         font-size: 2rem;
     }
 
-    /* Ändert die Beitrags-Galerie-Zeilen zu untereinander */
     .gallery-row {
         grid-template-columns: 1fr;
         gap: 15px;
     }
     
     .gallery-media {
-        max-width: 100%; /* Nutzt volle Breite auf Mobile */
+        max-width: 100%;
     }
 }
 
@@ -549,25 +598,20 @@ body {
     .name { font-size: 2.5rem; }
     .portfolio-container { padding: 0 20px 40px 20px; }
     
-    /* Der seitliche Zurück-Button wird komplett versteckt, stört auf Touch */
     .side-back-btn {
         display: none !important;
     }
 
-    /* YouTube Videos stehen untereinander */
     .video-row {
         flex-direction: column;
     }
 
-    /* Equal Grid (z.B. 3er Reihen) untereinander */
     .equal-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-    /* Vorher stand hier fälschlicherweise .gallery-row auf center, 
-       was das mühsam gebaute Flex-Layout zerschossen hat */
     .comparison-grid {
         grid-template-columns: 1fr;
     }
@@ -580,5 +624,88 @@ body {
 @media (max-width: 500px) {
     .masonry-gallery { 
         column-count: 1; 
+    }
+}
+
+
+/* ==========================================================================
+    GLOBALES LIGHTBOX-CSS (Zentriert & Modernisiert)
+   ========================================================================== */
+
+.lightbox-nav-btn {
+    position: fixed; /* Hält die Pfeile starr im sichtbaren Viewport */
+    top: 50%;
+    transform: translateY(-50%); /* Perfekte vertikale Ausrichtung */
+    background: rgba(20, 20, 20, 0.6);
+    color: #ffffff;
+    border: 1px solid rgba(var(--accent-color-rgb, 255, 255, 255), 0.2);
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    backdrop-filter: blur(5px); /* Eleganter Glaseffekt */
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    z-index: 10100; /* Liegt sicher über dem abgedunkelten Modal */
+}
+
+.lightbox-nav-btn:hover {
+    background: rgba(var(--accent-color-rgb, 0, 122, 255), 0.8);
+    border-color: rgba(var(--accent-color-rgb, 0, 122, 255), 1);
+    box-shadow: 0 0 20px rgba(var(--accent-color-rgb, 0, 122, 255), 0.5);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-prev { 
+    left: 30px; 
+}
+
+.lightbox-next { 
+    right: 30px; 
+}
+
+/* Touch-Geräte Optimierungen */
+@media (max-width: 768px) {
+    .lightbox-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+        background: rgba(20, 20, 20, 0.8); /* Erhöhter Kontrast auf Mobilgeräten */
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+}
+
+/* --- Lightbox Text/Caption Oben --- */
+.lightbox-caption {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(13, 15, 18, 0.75);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+    z-index: 10050; /* Über dem Bild, unter den Schließen-Buttons */
+    pointer-events: none; /* Klicks gehen durch den Text durch */
+}
+
+/* Anpassung auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+    .lightbox-caption {
+        font-size: 0.95rem;
+        top: 2%;
+        width: 85%;
     }
 }
