@@ -76,44 +76,56 @@
 
     <div class="section-divider"></div>
 
-    <h2 class="gallery-heading">My Contributions</h2>
 
-    <section class="additional-gallery">
-        <div class="gallery-row">
-            <video class="gallery-media" autoplay muted loop playsinline>
-            <source src="../assets/BattleWall/MultiplayerSetup.mp4" type="video/mp4">
-            </video>            
-            <p class="gallery-text">Local-based MR multiplayer setup with Photon Pun2.</p>
-        </div>
+    <!-- Eigene Beiträge (Modernes Grid-System) -->
+        <section class="project-media-section">
+            <h3 class="gallery-heading">My Contributions</h3>
+            <div class="equal-grid">        
+                
+                <div class="grid-item-wrapper">
+                    <video src="../assets/BattleWall/MultiplayerSetup.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Local MR multiplayer configuration via Photon PUN2"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Local MR multiplayer configuration via Photon PUN2</p>
+                    </div>
+                </div>
 
-        <div class="gallery-row">
-           <video class="gallery-media" autoplay muted loop playsinline>
-            <source src="../assets/BattleWall/Connection.mp4" type="video/mp4">
-            </video>  
-            <p class="gallery-text">Connection to Powerwall + multiple MR clients. Syncing objects between all clients.</p>
-        </div>
+                <div class="grid-item-wrapper">
+                    <video src="../assets/BattleWall/Connection.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Powerwall connection & asset synchronization across multiple MR clients"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Powerwall connection & asset synchronization across multiple MR clients</p>
+                    </div>
+                </div>
 
-        <div class="gallery-row">
-           <video class="gallery-media" autoplay muted loop playsinline>
-            <source src="../assets/BattleWall/FightingLogic.mp4" type="video/mp4">
-            </video>  
-            <p class="gallery-text">Fighting logic & unit behavior + ragdolls.</p>
-        </div>
+                <div class="grid-item-wrapper">
+                    <video src="../assets/BattleWall/FightingLogic.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Combat logic, unit behaviors, and active ragdoll systems"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Combat logic, unit behaviors, and active ragdoll systems</p>
+                    </div>
+                </div>
 
-        <div class="gallery-row">
-           <video class="gallery-media" autoplay muted loop playsinline>
-            <source src="../assets/BattleWall/Interaction.mp4" type="video/mp4">
-            </video>  
-            <p class="gallery-text">Ragdoll throwing interaction with custom physics calculations for more accurate and intuitive aiming</p>
-        </div>
+                <div class="grid-item-wrapper">
+                    <video src="../assets/BattleWall/Interaction.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Custom physics calculations for accurate and intuitive ragdoll throwing interactions"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Custom physics calculations for accurate and intuitive ragdoll throwing interactions</p>
+                    </div>
+                </div>
 
-        <div class="gallery-row">
-            <img src="../assets/BattleWall/LowPolyAssets.png" alt="Contributions 5" class="gallery-media">
-            <p class="gallery-text">Low-Poly units. Rig and animations from Mixamo.
+                <div class="grid-item-wrapper">
+                    <img src="../assets/BattleWall/LowPolyAssets.png" alt="Low-Poly Units" class="equal-item zoomable" data-caption="Low-Poly assets">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Low-Poly assets</p>
+                    </div>
+                </div>
 
-To save materials and drawcalls, every unit uses a 4x4 pixel texture and the same material</p>
-        </div>
-    </section>
+                <div class="grid-item-wrapper">
+                    <img src="../assets/BattleWall/TextureShowcase.png" alt="Low-Poly Units" class="equal-item zoomable" data-caption="4x4 pixel textures for best performance">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">4x4 pixel textures for best performance</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
             <!-- Zurück-Button -->
         <div class="button-wrapper back-button-container">
