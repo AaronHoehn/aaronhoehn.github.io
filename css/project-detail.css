@@ -10,6 +10,13 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* Absoluter Schutz vor horizontalem Scrollen */
+    position: relative;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #0d0f12;
@@ -18,8 +25,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden; /* Verhindert finales horizontales Scrollen */
-    width: 100%;
 }
 
 /* --- Hintergrundbild --- */
@@ -187,7 +192,7 @@ body {
 .hidden-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 0, 0.2, 1), opacity 0.4s ease; }
 .show-content { max-height: 2000px; opacity: 1; transition: max-height 0.7s cubic-bezier(0.4, 0, 1, 1), opacity 0.6s ease; }
 
-/* Side Panel */
+/* --- Side Panel --- */
 .side-back-btn {
     position: fixed;
     top: 50%;
@@ -224,27 +229,38 @@ body {
     left: 0;
 }
 
-/* Modal / Invisible Area */
+/* --- Modal / Lightbox Base Container --- */
 .modal {
-    display: none;
+    display: none; 
     position: fixed;
     z-index: 10000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.95);
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Flexbox-Erzwingung bei Aktivierung */
+.modal[style*="display: block"],
+.modal[style*="display: flex"] {
+    display: flex !important;
 }
 
 .modal-content {
-    margin: auto;
+    margin: 0; 
     display: block;
-    max-width: 90%;
-    max-height: 85vh; /* Nutzt maximal 85% der Bildschirmhöhe */
-    margin-top: 5%;
+    width: auto;
+    height: auto;
+    max-width: 100%; 
+    max-height: 80vh; 
     border-radius: 8px;
-    object-fit: contain; /* Behält das originale Seitenverhältnis im Vollbild bei */
+    object-fit: contain; 
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
 .close {
@@ -256,7 +272,7 @@ body {
     cursor: pointer;
 }
 
-/* Kontakt & Footer */
+/* --- Kontakt & Footer --- */
 .contact-section { text-align: center; padding: 60px 20px; margin-top: 40px; }
 .contact-links { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; }
 .contact-links a { color: white; text-decoration: none !important; border-bottom: none !important; font-size: 1.1rem; font-family: 'Roboto Mono', monospace; transition: color 0.3s ease; }
@@ -265,7 +281,7 @@ body {
 .site-footer { text-align: center; padding: 20px; margin-top: 20px; }
 .site-footer p { font-size: 0.85rem; color: #888; font-family: 'Inter', sans-serif; margin: 0; }
 
-/* project-detail.css Core */
+/* --- project-detail.css Core --- */
 .project-bg {
     position: fixed;
     top: 0;
@@ -379,7 +395,7 @@ body {
     margin: 40px auto;
 }
 
-/* Galerie Bereich */
+/* --- Galerie Bereich --- */
 .additional-gallery {
     display: flex;
     flex-direction: column;
@@ -431,7 +447,7 @@ body {
     padding: 0 20px;
 }
 
-/* Masonry Bildergalerie */
+/* --- Masonry Bildergalerie --- */
 .masonry-gallery {
     column-count: 3;
     column-gap: 15px;
@@ -451,7 +467,7 @@ body {
 
 .masonry-item:hover { transform: scale(1.02); }
 
-/* Video Row */
+/* --- Video Row --- */
 .video-row {
     display: flex;
     justify-content: center;
@@ -466,7 +482,7 @@ body {
     flex: 1;
 }
 
-/* Comparison */
+/* --- Comparison --- */
 .comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -499,7 +515,6 @@ body {
     width: 100%;
 }
 
-/* Container-Wrapper für die einzelnen Grid-Elemente */
 .grid-item-wrapper {
     position: relative;
     width: 100%;
@@ -516,13 +531,12 @@ body {
     box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
 }
 
-/* Das eigentliche Bild oder Video innerhalb des Wrappers */
 .equal-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border: none; /* Rahmen wird jetzt sauber vom Wrapper verwaltet */
+    border: none;
     transition: transform 0.3s ease;
     display: block;
 }
@@ -531,7 +545,6 @@ body {
     transform: scale(1.04);
 }
 
-/* Die halbtransparente Textebene, die sich beim Hovern drüberlegt */
 .hover-caption-overlay {
     position: absolute;
     top: 0;
@@ -546,14 +559,13 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 5;
-    pointer-events: none; /* Klicks gehen durch auf das zoomable Element */
+    pointer-events: none;
 }
 
 .grid-item-wrapper:hover .hover-caption-overlay {
     opacity: 1;
 }
 
-/* Styling für den Text auf dem Bild/Video */
 .hover-caption-text {
     font-family: 'Roboto Mono', monospace;
     color: #ffffff;
@@ -564,78 +576,11 @@ body {
     padding-left: 10px;
 }
 
-
-/* ==========================================================================
-    MEDIA QUERIES (Responsive Design für Mobile & Tablets)
-   ========================================================================== */
-
-@media (max-width: 1024px) {
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 900px) {
-    .battlewall-container { 
-        grid-template-columns: 1fr; 
-        margin-top: 40px;
-        gap: 30px;
-    }
-    
-    .text-column h1 {
-        font-size: 2rem;
-    }
-
-    .gallery-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .gallery-media {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .name { font-size: 2.5rem; }
-    .portfolio-container { padding: 0 20px 40px 20px; }
-    
-    .side-back-btn {
-        display: none !important;
-    }
-
-    .video-row {
-        flex-direction: column;
-    }
-
-    .equal-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    .comparison-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-heading {
-        font-size: 1.4rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .masonry-gallery { 
-        column-count: 1; 
-    }
-}
-
-
-/* ==========================================================================
-    GLOBALES LIGHTBOX-CSS (Zentriert & Modernisiert)
-   ========================================================================== */
-
+/* --- Globale Lightbox Controls --- */
 .lightbox-nav-btn {
-    position: fixed; /* Hält die Pfeile starr im sichtbaren Viewport */
+    position: fixed; 
     top: 50%;
-    transform: translateY(-50%); /* Perfekte vertikale Ausrichtung */
+    transform: translateY(-50%); 
     background: rgba(20, 20, 20, 0.6);
     color: #ffffff;
     border: 1px solid rgba(var(--accent-color-rgb, 255, 255, 255), 0.2);
@@ -647,10 +592,10 @@ body {
     justify-content: center;
     cursor: pointer;
     border-radius: 50%;
-    backdrop-filter: blur(5px); /* Eleganter Glaseffekt */
+    backdrop-filter: blur(5px); 
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     user-select: none;
-    z-index: 10100; /* Liegt sicher über dem abgedunkelten Modal */
+    z-index: 10100; 
 }
 
 .lightbox-nav-btn:hover {
@@ -660,27 +605,9 @@ body {
     transform: translateY(-50%) scale(1.08);
 }
 
-.lightbox-prev { 
-    left: 30px; 
-}
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
 
-.lightbox-next { 
-    right: 30px; 
-}
-
-/* Touch-Geräte Optimierungen */
-@media (max-width: 768px) {
-    .lightbox-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.4rem;
-        background: rgba(20, 20, 20, 0.8); /* Erhöhter Kontrast auf Mobilgeräten */
-    }
-    .lightbox-prev { left: 10px; }
-    .lightbox-next { right: 10px; }
-}
-
-/* --- Lightbox Text/Caption Oben --- */
 .lightbox-caption {
     position: absolute;
     top: 3%;
@@ -697,15 +624,108 @@ body {
     padding: 10px 20px;
     border-radius: 6px;
     border: 1px solid rgba(var(--accent-color-rgb), 0.2);
-    z-index: 10050; /* Über dem Bild, unter den Schließen-Buttons */
-    pointer-events: none; /* Klicks gehen durch den Text durch */
+    z-index: 10050; 
+    pointer-events: none; 
 }
 
-/* Anpassung auf kleinen Bildschirmen */
-@media (max-width: 768px) {
-    .lightbox-caption {
-        font-size: 0.95rem;
-        top: 2%;
-        width: 85%;
+
+/* ==========================================================================
+    MEDIA QUERIES (Zusammengefasst & Bereinigt)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .battlewall-container { 
+        grid-template-columns: 1fr; 
+        margin-top: 40px;
+        gap: 30px;
     }
+    
+    .text-column h1 { font-size: 2rem; }
+    .gallery-row { grid-template-columns: 1fr; gap: 15px; }
+    .gallery-media { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .name { font-size: 2.5rem; }
+    .portfolio-container { padding: 0 20px 40px 20px; }
+    .video-row { flex-direction: column; }
+    
+    /* FIX: Verhindert, dass der versteckte Button links den Viewport sprengt */
+    .side-back-btn {
+        display: none !important;
+        left: 0 !important;
+        transform: none !important;
+    }
+
+    /* Equal Grid Mobile Modifikationen */
+    .equal-grid {
+        grid-template-columns: 1fr !important; 
+        padding: 0 20px;
+        gap: 25px; 
+    }
+
+    .grid-item-wrapper {
+        aspect-ratio: auto; 
+        width: 100%;
+    }
+
+    .equal-item {
+        width: 100%;
+        height: auto; 
+        object-fit: contain;
+    }
+
+    .hover-caption-overlay {
+        position: relative; 
+        opacity: 1 !important;
+        background: transparent;
+        padding: 10px 0 0 0;
+        height: auto;
+    }
+
+    .hover-caption-text {
+        text-align: left; 
+        font-size: 0.85rem;
+    }
+
+    .grid-item-wrapper:hover .equal-item {
+        transform: none;
+    }
+
+    /* Lightbox Mobile Navigation & Controls */
+    .lightbox-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+        background: rgba(20, 20, 20, 0.8); 
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+
+    .close {
+        top: 20px;
+        right: 20px;
+        font-size: 35px;
+        z-index: 10200; 
+    }
+
+    .lightbox-caption {
+        top: auto;
+        bottom: 5%; 
+        width: 90%;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+    .gallery-heading { font-size: 1.4rem; }
+}
+
+@media (max-width: 500px) {
+    .masonry-gallery { column-count: 1; }
 }

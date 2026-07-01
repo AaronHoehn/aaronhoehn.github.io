@@ -12,38 +12,61 @@
     <script src="../js/script.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+    
+    <style>
+        /* Kleine, spezifische Ergänzung direkt für diese Layout-Struktur */
+        .main-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+        
+        @media (max-width: 900px) {
+            .battlewall-container {
+                margin: 40px auto 10px auto !important;
+                padding: 0 !important;
+            }
+            .text-column h1 {
+                font-size: 2rem !important;
+                word-break: break-word; /* Verhindert, dass der lange Titel den Schirm sprengt */
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div id="gpt-bg" class="project-bg"></div>
+    <div id="gpt-bg" class="project-bg"></div>
     <div class="project-overlay" style="background: rgba(0, 0, 0, 0.8);"></div>
 
-    <main class="battlewall-container">
-      
-        <div class="video-column">
-        <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/GPTCover.png">
-            <source src="../assets/Videos/GPT.mp4" type="video/mp4">
-        </video>
-        </div>
+    <!-- Der neue Wrapper hält alles mobil auf Bildschirmbreite -->
+    <div class="main-wrapper">
 
-        <div class="text-column">
-            <h1>GoethesPuppetTheater (2025)</h1>
-
-            <div class="project-meta-tags" style="margin-bottom: 20px;">
-            <span class="meta-tag">Unity</span>
-            <span class="meta-tag">Mixed Reality</span>
-            <span class="meta-tag">AI-driven Characters</span>
-            <span class="meta-tag">Motion Capture</span>
-            <span class="meta-tag">TextToSpeech</span>
+        <main class="battlewall-container">
+            <div class="video-column">
+                <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/GPTCover.png">
+                    <source src="../assets/Videos/GPT.mp4" type="video/mp4">
+                </video>
             </div>
 
-            <h3 class="subtitle">5th Semester Group Project</h3>
-            <p>Goethes Puppet Theater is an interactive Mixed Reality experience developed for the Goethe Museum by a team of three. Users place physical puppet, onto a miniature stage to trigger AI-driven, dynamic plays featuring characters from Johann Wolfgang von Goethes life and works.</p>
-            <p>As a generalist on the team, I was involved in all core areas of development. We combined room mapping and NavMesh-based navigation with ChatGPT-generated dialogues that dynamically adapt to structured prompts (controlling theme, emotion, and backdrop).</p>
-            <p>Key Features: AI-driven storytelling, Meta Voice SDK (TTS), 80+ custom mocap animations, cloth physics and ragdoll physics.</p>
-        </div>
-    </main>
+            <div class="text-column">
+                <h1>GoethesPuppetTheater (2025)</h1>
+
+                <div class="project-meta-tags" style="margin-bottom: 20px;">
+                    <span class="meta-tag">Unity</span>
+                    <span class="meta-tag">Mixed Reality</span>
+                    <span class="meta-tag">AI-driven Characters</span>
+                    <span class="meta-tag">Motion Capture</span>
+                    <span class="meta-tag">TextToSpeech</span>
+                </div>
+
+                <h3 class="subtitle">5th Semester Group Project</h3>
+                <p>Goethes Puppet Theater is an interactive Mixed Reality experience developed for the Goethe Museum by a team of three. Users place physical puppet, onto a miniature stage to trigger AI-driven, dynamic plays featuring characters from Johann Wolfgang von Goethes life and works.</p>
+                <p>As a generalist on the team, I was involved in all core areas of development. We combined room mapping and NavMesh-based navigation with ChatGPT-generated dialogues that dynamically adapt to structured prompts (controlling theme, emotion, and backdrop).</p>
+                <p>Key Features: AI-driven storytelling, Meta Voice SDK (TTS), 80+ custom mocap animations, cloth physics and ragdoll physics.</p>
+            </div>
+        </main>
 
         <div class="video-row">
             <div class="video-wrapper">
@@ -76,96 +99,92 @@
             </div>
         </section>
 
-            <div class="section-divider"></div>
+        <div class="section-divider"></div>
 
-
-    <section class="additional-gallery">
-
+        <section class="additional-gallery">
             <div class="gallery-row">
-                <img src="../assets/GPT/ShowTech.jpg" alt="Beitrag 1" class="masonry-item zoomable">
+                <img src="../assets/GPT/ShowTech.jpg" alt="Beitrag 1" class="gallery-media zoomable">
                 <div class="gallery-text-wrapper">
                     <p class="gallery-text">Presented the project at the ShowTech (2025) in Berlin.</p>
                     <p class="gallery-text">Project is still on display at the Goethe National Museum in Weimar.</p>
                 </div>
             </div>
-
         </section>
 
+        <!-- Contributions -->
+        <section class="project-media-section">
+            <h3 class="gallery-heading">My Contributions</h3>
+            <div class="equal-grid">        
+                
+                <div class="grid-item-wrapper">
+                    <video src="../assets/GPT/RagdollGrabbing.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Ragdoll-Physics with handtracking + Cloth-Physics"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Ragdoll-Physics with handtracking + Cloth-Physics</p>
+                    </div>
+                </div>
 
-<!-- Contributions -->
-<section class="project-media-section">
-    <h3 class="gallery-heading">My Contributions</h3>
-    <div class="equal-grid">        
-        
-        <div class="grid-item-wrapper">
-            <video src="../assets/GPT/RagdollGrabbing.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Ragdoll-Physics with handtracking + Cloth-Physics"></video>
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Ragdoll-Physics with handtracking + Cloth-Physics</p>
+                <div class="grid-item-wrapper">
+                    <video src="../assets/GPT/Mephisto.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Character Logic / Statemachine"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Character Logic / Statemachine</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <video src="../assets/GPT/GeneratedPlay.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Connecting ChatGPT to the characters to generate individual conversations"></video>
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Connecting ChatGPT to the characters to generate individual conversations</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <img src="../assets/GPT/Navmesh.png" alt="Navmesh" class="equal-item zoomable" data-caption="Roommapping + Runtime NavMesh generation">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Roommapping + Runtime NavMesh generation</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <img src="../assets/GPT/MotionCapture.png" alt="MoCap" class="equal-item zoomable" data-caption="Mocap-Recoding and cleanup (80+ Animations)">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Mocap-Recoding and cleanup (80+ Animations)</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <img src="../assets/GPT/Mesh.PNG" alt="Characters" class="equal-item zoomable" data-caption="Character Modeling & Rigging | Retargeting of Mocap animations">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Character Modeling & Rigging | Retargeting of Mocap animations</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <img src="../assets/GPT/Characters.png" alt="Characters" class="equal-item zoomable" data-caption="Texturing (Substance Painter)">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Character modeling + texturing</p>
+                    </div>
+                </div>
+
+                <div class="grid-item-wrapper">
+                    <img src="../assets/GPT/UV.PNG" alt="Navmesh" class="equal-item zoomable" data-caption="Character UV unwrapping">
+                    <div class="hover-caption-overlay">
+                        <p class="hover-caption-text">Character UV unwrapping</p>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
 
-        <div class="grid-item-wrapper">
-            <video src="../assets/GPT/Mephisto.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Character Logic / Statemachine"></video>
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Character Logic / Statemachine</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <video src="../assets/GPT/GeneratedPlay.mp4" class="equal-item zoomable" autoplay muted loop playsinline data-caption="Connecting ChatGPT to the characters to generate individual conversations"></video>
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Connecting ChatGPT to the characters to generate individual conversations</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <img src="../assets/GPT/Navmesh.png" alt="Navmesh" class="equal-item zoomable" data-caption="Roommapping + Runtime NavMesh generation">
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Roommapping + Runtime NavMesh generation</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <img src="../assets/GPT/MotionCapture.png" alt="MoCap" class="equal-item zoomable" data-caption="Mocap-Recoding and cleanup (80+ Animations)">
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Mocap-Recoding and cleanup (80+ Animations)</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <img src="../assets/GPT/Mesh.PNG" alt="Characters" class="equal-item zoomable" data-caption="Character Modeling & Rigging | Retargeting of Mocap animations">
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Character Modeling & Rigging | Retargeting of Mocap animations</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <img src="../assets/GPT/Characters.png" alt="Characters" class="equal-item zoomable" data-caption="Texturing (Substance Painter)">
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Character modeling + texturing</p>
-            </div>
-        </div>
-
-        <div class="grid-item-wrapper">
-            <img src="../assets/GPT/UV.PNG" alt="Navmesh" class="equal-item zoomable" data-caption="Character UV unwrapping">
-            <div class="hover-caption-overlay">
-                <p class="hover-caption-text">Character UV unwrapping</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-
-<!-- Zurück-Button -->
+        <!-- Zurück-Button -->
         <div class="button-wrapper back-button-container">
             <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
         </div>
 
-        <div id="side-back-button" class="side-back-btn">
-            <a href="../index.html">← Portfolio</a>
-        </div>
+    </div> <!-- Ende main-wrapper -->
+
+    <div id="side-back-button" class="side-back-btn">
+        <a href="../index.html">← Portfolio</a>
+    </div>
 
 </body>
 </html>
