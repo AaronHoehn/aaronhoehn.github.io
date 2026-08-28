@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poly Quest | Aaron Hoehn</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project-detail.css">
+    <link rel="icon" type="image/png" href="../icon.png">
+
+    <script src="../js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="polyquest-bg" class="project-bg"></div>
+    <div class="project-overlay" style="background: rgba(0, 0, 0, 0.7);"></div>
+
+    <main class="battlewall-container">
+        <div class="video-column">
+        <video class="project-gif" autoplay muted loop playsinline poster="../assets/ProjectCover/PolyQuestCover.png">
+            <source src="../assets/PolyQuest/PreviewVideo.mp4" type="video/mp4">
+        </video>
+        </div>
+
+        <div class="text-column">
+            <h1>Poly Quest (Work in Progress)</h1>
+
+            <div class="project-meta-tags" style="margin-bottom: 20px;">
+                <span class="meta-tag">Unity</span>
+                <span class="meta-tag">Crossplay Multiplayer</span>
+                <span class="meta-tag">ARPG</span>
+                <span class="meta-tag">Fishnet</span>
+            </div>
+
+            <h3 class="subtitle">Crossplay Multiplayer ARPG (Unity)</h3>
+            <p>Poly Quest is a private solo project and a current prototype: an Action-RPG built in Unity that lets players jump into the same session from PC or mobile. Networking runs on Fishnet, synchronizing combat, movement, and world state across every connected client regardless of platform.</p>
+            <p>The project covers a lobby-based main menu with character selection, an ARPG character controller tuned for both mobile touch and PC input, and an inventory system that automatically persists to JSON.</p>
+        </div>
+    </main>
+
+    <section class="project-tools-section">
+        <h3 class="project-tools-heading">Tools & Technologies</h3>
+        <div class="project-tools-grid">
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Unity.png" alt="Unity" class="detail-tool-logo">
+                <span class="detail-tool-name">Unity</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Fishnet.png" alt="Fishnet" class="detail-tool-logo">
+                <span class="detail-tool-name">Fishnet</span>
+            </div>
+
+            <div class="detail-tool-card">
+                <img src="../assets/Logos/Blender.png" alt="Blender" class="detail-tool-logo">
+                <span class="detail-tool-name">Blender</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="additional-gallery">
+        <div class="gallery-row">
+            <video src="../assets/PolyQuest/MultiplayerSyncing.mp4" class="gallery-media zoomable" autoplay muted loop playsinline data-caption="Crossplay Multiplayer Setup (PC & Mobile) with Fishnet."></video>
+            <p class="gallery-text">Crossplay Multiplayer Setup (PC & Mobile) with Fishnet.</p>
+        </div>
+
+        <div class="gallery-row">
+            <video src="../assets/PolyQuest/MobileFighting.mp4" class="gallery-media zoomable" autoplay muted loop playsinline data-caption="ARPG Character controller with mobile and PC controls."></video>
+            <p class="gallery-text">ARPG Character controller with mobile and PC controls.</p>
+        </div>
+
+        <div class="gallery-row">
+            <video src="../assets/PolyQuest/Inventory.mp4" class="gallery-media zoomable" autoplay muted loop playsinline data-caption="Inventory System with automatic saving in Json Format."></video>
+            <p class="gallery-text">Inventory System with automatic saving in Json Format.</p>
+        </div>
+
+        <div class="gallery-row">
+            <video src="../assets/PolyQuest/MainMenuLowRes.mp4" class="gallery-media zoomable" autoplay muted loop playsinline data-caption="Main Menu with Lobby System and Character Selection."></video>
+            <p class="gallery-text">Main Menu with Lobby System and Character Selection.</p>
+        </div>
+    </section>
+
+            <!-- Zurück-Button -->
+        <div class="button-wrapper back-button-container">
+            <a href="../index.html" class="btn-about btn-back">Back to Portfolio</a>
+        </div>
+
+        <div id="side-back-button" class="side-back-btn">
+            <a href="../index.html">← Portfolio</a>
+        </div>
+
+</body>
+</html>

@@ -294,6 +294,7 @@ body {
 }
 
 /* Background IDs */
+#polyquest-bg { background-image: url('../assets/ProjectCover/PolyQuestCover.png'); }
 #battlewall-bg { background-image: url('../assets/Backgrounds/BattleWallBackground.png'); }
 #gpt-bg { background-image: url('../assets/Backgrounds/GPTBackground.png'); }
 #RPS-bg { background-image: url('../assets/Backgrounds/RPSBackground.png'); }
@@ -426,6 +427,16 @@ body {
     border-radius: 8px;
     border: 1px solid rgba(var(--accent-color-rgb), 0.3);
     display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoomable {
+    cursor: pointer;
+}
+
+.gallery-media.zoomable:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
 }
 
 .gallery-text {
@@ -516,7 +527,7 @@ body {
     width: 100%;
 }
 
-/* Der äußere Grid-Item Wrapper fungiert als Anker für das absolute Overlay auf PC */
+/* Der ï¿½uï¿½ere Grid-Item Wrapper fungiert als Anker fï¿½r das absolute Overlay auf PC */
 .grid-item-wrapper {
     display: flex;
     flex-direction: column;
@@ -525,7 +536,7 @@ body {
     position: relative;
 }
 
-/* Innerer Container für das Seitenverhältnis der Medien */
+/* Innerer Container fï¿½r das Seitenverhï¿½ltnis der Medien */
 .equal-item-container {
     position: relative;
     width: 100%;
@@ -536,7 +547,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Spezifisches Querformat für die Klassen-Kombination .landscape-grid */
+/* Spezifisches Querformat fï¿½r die Klassen-Kombination .landscape-grid */
 .landscape-grid .equal-item-container {
     aspect-ratio: 16 / 9;
 }
@@ -551,7 +562,7 @@ body {
     display: block;
 }
 
-/* Hover-Effekte auf den Medien-Container beschränken */
+/* Hover-Effekte auf den Medien-Container beschrï¿½nken */
 .grid-item-wrapper:hover .equal-item-container { 
     transform: scale(1.03);
     box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
@@ -561,7 +572,7 @@ body {
     transform: scale(1.04);
 }
 
-/* PC-STANDARD: Beschriftung blendet sich als schickes Overlay beim Hovern ÜBER dem Bild ein */
+/* PC-STANDARD: Beschriftung blendet sich als schickes Overlay beim Hovern ï¿½BER dem Bild ein */
 .hover-caption-overlay {
     position: absolute;
     bottom: 0;
