@@ -6,7 +6,7 @@
     padding-top: 60px;
 }
 
-/* Zweispaltiges Layout für Bild und Text */
+/* Zweispaltiges Layout fï¿½r Bild und Text */
 .about-hero {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -44,13 +44,15 @@
     font-weight: 600;
 }
 
-/* Zwischenüberschriften für Skills/Tools */
+/* Zwischenï¿½berschriften fï¿½r Skills/Tools */
 .subsection-title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 25px;
     font-family: 'Roboto Mono', monospace;
     color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Skills Layout (Badges) */
@@ -109,7 +111,7 @@
     color: #ffffff;
 }
 
-/* Zurück-Button Styling-Anpassung */
+/* Zurï¿½ck-Button Styling-Anpassung */
 .back-button-container {
     padding-top: 20px;
 }
@@ -118,7 +120,7 @@
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* --- Responsive Anpassung für mobile Geräte --- */
+/* --- Responsive Anpassung fï¿½r mobile Gerï¿½te --- */
 @media (max-width: 850px) {
     .about-hero {
         grid-template-columns: 1fr; /* Schaltet auf einspaltig um */
